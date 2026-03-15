@@ -1,0 +1,22 @@
+body{
+font-family: Arial;
+margin:0;
+background:#f5f5f5;
+text-align:center;
+}
+
+header{
+background:#222;
+color:white;
+padding:60px;
+}
+
+section{
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+background:#caa23b;
+border:none;
+}
