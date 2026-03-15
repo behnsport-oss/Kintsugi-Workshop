@@ -1,152 +1,63 @@
-import React, { useState } from 'react'
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kintsugi Beziehungen Workshop</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-export default function LandingPage() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState(null)
-  const [loading, setLoading] = useState(false)
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Kintsugi Beziehungen Workshop</h1>
+    <p>Emotionale Stabilität, Beziehungsmuster erkennen, Selbstregulierung & Reflexion</p>
+    <a href="#coaching" class="cta-btn">Jetzt Workshop entdecken</a>
+  </div>
+</header>
 
-  async function handleSubscribe(e) {
-    e.preventDefault()
-    if (!email || !email.includes('@')) {
-      setStatus({ ok: false, message: 'Bitte gib eine gültige E-Mail ein.' })
-      return
-    }
-    setLoading(true)
-    setStatus(null)
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
-      const data = await res.json()
-      if (res.ok) {
-        setStatus({ ok: true, message: data.message || 'Danke — bitte bestätige deine E-Mail.' })
-        setEmail('')
-      } else {
-        setStatus({ ok: false, message: data.error || 'Etwas ist schiefgelaufen. Versuche es später erneut.' })
-      }
-    } catch {
-      setStatus({ ok: false, message: 'Netzwerkfehler. Bist du online?' })
-    } finally {
-      setLoading(false)
-    }
-  }
+<!-- Über mich -->
+<section id="ueber-mich" class="section">
+  <h2>Über mich</h2>
+  <p>Ich bin [Dein Name], Autorin von <strong>Kintsugi Kriegerin</strong> und Coach für emotionale Stabilität. Ich unterstütze Menschen dabei, ihre Beziehungsmuster zu erkennen, gesunde Grenzen zu setzen und ihr Nervensystem zu regulieren.</p>
+</section>
 
-  const mockPosts = [
-    { id: 1, title: 'Verlustangst verstehen', excerpt: 'Wie emotionale Muster dein Verhalten in Beziehungen beeinflussen.' },
-    { id: 2, title: 'Selbstregulierung & Grenzen', excerpt: 'Praktische Methoden, um eigene Bedürfnisse klar zu kommunizieren.' },
-    { id: 3, title: 'Reflexion & Muster erkennen', excerpt: 'Werkzeuge, um Beziehungsmuster zu erkennen und gesunde Entscheidungen zu treffen.' }
-  ]
+<!-- Workshop / Angebot -->
+<section id="angebot" class="section grey-bg">
+  <h2>Workshop & Coaching-Angebot</h2>
+  <ul>
+    <li>Bindungsmuster erkennen: Verlustangst & Vermeider</li>
+    <li>Nervensystem regulieren: Atem- & Körperarbeit</li>
+    <li>Selbstwert stärken & gesunde Grenzen setzen</li>
+    <li>Reflexion & Zukunftsstrategie</li>
+  </ul>
+  <a href="#coaching" class="cta-btn">Jetzt Termin sichern</a>
+</section>
 
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <header className="bg-white shadow">
-        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-          <h1 className="text-xl font-semibold">Kintsugi Beziehungen Workshop</h1>
-          <nav className="space-x-4 text-sm">
-            <a href="#about" className="hover:underline">Über mich</a>
-            <a href="#blog" className="hover:underline">Blog</a>
-            <a href="#ebook" className="hover:underline">Workshop gratis PDF</a>
-          </nav>
-        </div>
-      </header>
+<!-- Coaching / Termine -->
+<section id="coaching" class="section">
+  <h2>Einzel-Coaching & Zoom-Gespräche</h2>
+  <p>Für tiefergehende Reflexion und persönliche Unterstützung biete ich Online-Coaching via Zoom an.</p>
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
-        {/* Hero */}
-        <section className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <p className="text-sm uppercase text-indigo-600 font-medium">Persönlichkeitsentwicklung & Beziehungen</p>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold leading-tight">Emotionale Stabilität & gesunde Beziehungsmuster</h2>
-            <p className="mt-4 text-gray-600">Erkenne deine Beziehungsmuster, lerne Selbstregulierung und Reflexion. Kostenloses PDF zum Einstieg.</p>
+  <!-- Calendly Widget -->
+  <div class="calendly-inline-widget" data-url="https://calendly.com/DEINBENUTZERNAME/60min" style="min-width:320px;height:630px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a href="#ebook" className="inline-block px-5 py-3 bg-indigo-600 text-white rounded-lg shadow hover:opacity-95">Gratis PDF sichern</a>
-              <a href="#blog" className="inline-block px-5 py-3 border rounded-lg">Mehr lesen</a>
-            </div>
+  <p>Nach der Buchung erhältst du automatisch den Zoom-Link für dein Coaching.</p>
+</section>
 
-            <div className="mt-6 text-sm text-gray-500">Starte deine Reise zu gesunden Beziehungen noch heute.</div>
-          </div>
+<!-- Call-to-Action -->
+<section class="section cta-section">
+  <h2>Bereit, deine emotionalen Muster zu transformieren?</h2>
+  <a href="#coaching" class="cta-btn">Jetzt Termin buchen</a>
+</section>
 
-          <div className="bg-white rounded-2xl p-6 shadow flex flex-col gap-4">
-            <h3 className="font-semibold">Selbstcheck: Wie stabil bist du in Beziehungen?</h3>
-            <p className="text-sm text-gray-600">(Nur 3 Fragen — als Einstieg für Workshop & Coaching.)</p>
-            <ul className="mt-2 space-y-2 text-sm">
-              <li>• Verlustangst oder emotionale Abhängigkeit</li>
-              <li>• Schwierigkeit Grenzen zu setzen</li>
-              <li>• Muster erkennen und reflektieren</li>
-            </ul>
-            <a href="#ebook" className="mt-4 self-start text-sm font-medium text-indigo-600 hover:underline">Lösungen & Tipps im PDF →</a>
-          </div>
-        </section>
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Kintsugi Beziehungen Workshop</p>
+</footer>
 
-        {/* About */}
-        <section id="about" className="mt-16">
-          <div className="grid md:grid-cols-3 gap-8 items-start">
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-semibold">Über mich</h3>
-              <p className="mt-4 text-gray-700">Ich bin [Dein Name], Autorin von <strong>Kintsugi Kriegerin</strong> und Coach für emotionale Stabilität. Ich unterstütze Menschen dabei, ihre Beziehungsmuster zu erkennen, Grenzen zu setzen und ihr Nervensystem zu regulieren.</p>
-
-              <div className="mt-4 space-y-2">
-                <p className="text-sm"><strong>Fokus:</strong> Verlustangst, Vermeider-Muster, Selbstwert, Reflexion und emotionale Stabilität.</p>
-                <p className="text-sm"><strong>Für wen:</strong> Männer und Frauen, die gesunde Beziehungen führen möchten.</p>
-              </div>
-            </div>
-
-            <aside className="bg-white p-4 rounded-lg shadow">
-              <p className="text-sm font-medium">Kurzprofil</p>
-              <p className="mt-2 text-sm text-gray-600">Erfahrung in Coaching, Yoga & Körperarbeit, spezialisiert auf emotionale Selbstführung.</p>
-            </aside>
-          </div>
-        </section>
-
-        {/* Blog preview */}
-        <section id="blog" className="mt-16">
-          <h3 className="text-2xl font-semibold">Aktuelle Artikel</h3>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {mockPosts.map(p => (
-              <article key={p.id} className="bg-white p-4 rounded-lg shadow">
-                <h4 className="font-semibold">{p.title}</h4>
-                <p className="mt-2 text-sm text-gray-600">{p.excerpt}</p>
-                <a className="mt-3 inline-block text-sm text-indigo-600 hover:underline" href="#">Weiterlesen →</a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* E-Book / Lead magnet */}
-        <section id="ebook" className="mt-16 bg-gradient-to-r from-indigo-50 to-white p-8 rounded-2xl">
-          <div className="md:flex md:items-center md:justify-between">
-            <div>
-              <h3 className="text-2xl font-semibold">PDF: 'Kintsugi Workshop – Erste Schritte'</h3>
-              <p className="mt-2 text-gray-700">Kurz & kompakt: Einblick in die Workshop-Themen, Übungen für Selbstregulierung und Reflexion. Trage deine E-Mail ein und erhalte das PDF gratis.</p>
-            </div>
-
-            <form onSubmit={handleSubscribe} className="mt-4 md:mt-0 flex gap-2">
-              <label htmlFor="email" className="sr-only">E-Mail</label>
-              <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Deine E-Mail" aria-label="E-Mail" className="px-4 py-2 rounded-lg border" />
-              <button type="submit" disabled={loading} className="px-4 py-2 rounded-lg bg-indigo-600 text-white">
-                {loading ? 'Sende...' : 'Senden'}
-              </button>
-            </form>
-          </div>
-
-          {status && (
-            <div className={`mt-4 p-3 rounded ${status.ok ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
-              {status.message}
-            </div>
-          )}
-
-          <div className="mt-6 text-sm text-gray-500">Nach der Anmeldung erhältst du weitere Infos zum Workshop & Zoom-Link.</div>
-        </section>
-      </main>
-
-      <footer className="bg-white border-t mt-12">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-          <div>© {new Date().getFullYear()} Kintsugi Beziehungen Workshop</div>
-          <div className="mt-2 md:mt-0">Kontakt: <a href="mailto:you@example.com" className="underline">you@example.com</a></div>
-        </div>
-      </footer>
-    </div>
-  )
-}
+</body>
+</html>
