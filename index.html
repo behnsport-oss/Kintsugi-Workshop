@@ -1,244 +1,170 @@
-import React, { useEffect, useMemo, useState } from 'react'
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kintsugi Beziehungen</title>
 
-export default function LandingPage() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [active, setActive] = useState('top') // 'top' | 'about' | 'blog' | 'ebook'
+<style>
 
-  // Smooth-scroll funktioniert via CSS; wir markieren zusätzlich den aktiven Menüpunkt:
-  useEffect(() => {
-    const ids = ['top', 'about', 'blog', 'ebook']
-    const sections = ids
-      .map(id => document.getElementById(id))
-      .filter(Boolean)
-
-    if (sections.length === 0) return
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        // den größten sichtbaren Bereich finden
-        let best = { id: active, ratio: 0 }
-        for (const e of entries) {
-          if (e.isIntersecting && e.intersectionRatio > best.ratio) {
-            best = { id: e.target.id, ratio: e.intersectionRatio }
-          }
-        }
-        if (best.id && best.id !== active) setActive(best.id)
-      },
-      {
-        root: null,
-        threshold: [0.2, 0.4, 0.6, 0.8], // je nach Sichtbarkeitsgrad
-      }
-    )
-
-    sections.forEach(sec => obs.observe(sec))
-    return () => obs.disconnect()
-  }, [active])
-
-  const navClass = useMemo(() => {
-    // Basis-Klassen für inaktive Links
-    const base = 'px-3 py-1.5 rounded-lg transition'
-    const inactive = 'text-gray-600 hover:text-gray-900'
-    const activeBtn = 'bg-teal-500 text-white'
-    const activeText = 'text-teal-600 font-semibold'
-
-    return {
-      top:        (active === 'top')   ? `${base} ${activeText}` : `${base} ${inactive}`,
-      about:      (active === 'about') ? `${base} ${activeText}` : `${base} ${inactive}`,
-      blog:       (active === 'blog')  ? `${base} ${activeText}` : `${base} ${inactive}`,
-      ebook:      (active === 'ebook') ? `${base} ${activeBtn}`  : `${base} bg-teal-500/10 text-teal-700 hover:bg-teal-500/20`,
-    }
-  }, [active])
-
-  async function handleSubscribe(e) {
-    e.preventDefault()
-    if (!email || !email.includes('@')) {
-      setStatus({ ok: false, message: 'Bitte gib eine gültige E-Mail ein.' })
-      return
-    }
-    setLoading(true)
-    setStatus(null)
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
-      const data = await res.json()
-      if (res.ok) {
-        setStatus({ ok: true, message: data.message || 'Danke — bitte bestätige deine E-Mail.' })
-        setEmail('')
-      } else {
-        setStatus({ ok: false, message: data.error || 'Etwas ist schiefgelaufen. Versuche es später erneut.' })
-      }
-    } catch {
-      setStatus({ ok: false, message: 'Netzwerkfehler. Bist du online?' })
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const mockPosts = [
-    { id: 1, title: 'Sanfte Morgenroutine bei Fibromyalgie', excerpt: '3 einfache Bewegungen, um Morgensteifigkeit zu lindern.' },
-    { id: 2, title: 'Schlaf verbessern trotz Schmerzen', excerpt: 'Praktische Tipps für besseren Schlaf und Erholung.' },
-    { id: 3, title: 'Ernährung & Energie: Kleine Umstellungen', excerpt: 'Lebensmittel, die oft gut bzw. schlecht vertragen werden.' }
-  ]
-
-  return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Top-Sentinel für IntersectionObserver */}
-      <div id="top" className="h-0"></div>
-
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur border-b sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-teal-500"></div>
-            <span className="text-lg font-semibold">Fibro-Balance</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-2 text-sm">
-            <a href="#about" className={navClass.about}>Über mich</a>
-            <a href="#blog"  className={navClass.blog}>Blog</a>
-            <a href="#ebook" className={navClass.ebook}>E-Book</a>
-          </nav>
-        </div>
-      </header>
-
-      {/* Main */}
-      <main className="max-w-6xl mx-auto px-6 py-14">
-
-        {/* Hero */}
-        <section className="grid md:grid-cols-2 gap-10 items-center bg-sky-50 rounded-2xl p-8 shadow">
-          <div>
-            <p className="text-xs tracking-wider uppercase text-teal-600 font-semibold">Leben mit Fibromyalgie</p>
-            <h1 className="mt-3 text-4xl md:text-5xl font-extrabold leading-tight">
-              Leben mit Fibromyalgie <span className="text-teal-600">leichter</span> machen
-            </h1>
-            <p className="mt-4 text-gray-700 text-lg">
-              Praktische Tipps, kleine Übungen und echte Erfahrungen — damit dein Alltag leichter wird. Hol dir das kostenlose E-Book als Start.
-            </p>
-
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <a href="#ebook" className="inline-block px-5 py-3 bg-teal-500 text-white rounded-xl shadow hover:bg-teal-600">
-                Kostenloses E-Book
-              </a>
-              <a href="#blog" className="inline-block px-5 py-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-100">
-                Mehr lesen
-              </a>
-            </div>
-
-            <div className="mt-4 text-sm text-gray-500">Sanfte Routinen • Schlafhygiene • Stressreduktion • Ernährung</div>
-          </div>
-
-          <div className="bg-white rounded-2xl p-6 shadow border">
-            <h3 className="text-xl font-semibold">Mini-Check: Wo stehst du gerade?</h3>
-            <p className="mt-1 text-sm text-gray-600">3 Punkte, die wir gemeinsam angehen:</p>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li>• Morgensteifigkeit & Schmerzen</li>
-              <li>• Schnelle Erschöpfung nach Aktivitäten</li>
-              <li>• Unruhiger Schlaf</li>
-            </ul>
-            <a href="#ebook" className="mt-5 inline-block text-sm font-medium text-teal-600 hover:underline">
-              Tipps & Übungen im E-Book →
-            </a>
-          </div>
-        </section>
-
-        {/* Über mich */}
-        <section id="about" className="mt-20 bg-white rounded-2xl shadow p-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold">Über mich</h2>
-              <p className="mt-3 text-gray-700">
-                Ich bin Behn — ich lebe mit Fibromyalgie und teile hier Erfahrungen, erprobte Alltagshilfen und einfache Übungen.
-                Mein Ziel: kurze, umsetzbare Werkzeuge, die wirklich in den Alltag passen.
-              </p>
-              <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
-                <div className="rounded-xl bg-sky-50 p-4 border">
-                  <div className="font-semibold">Fokus</div>
-                  <div className="text-gray-600 mt-1">Schlaf & Erholung, sanfte Bewegung, Stressreduktion, Ernährung</div>
-                </div>
-                <div className="rounded-xl bg-teal-50 p-4 border">
-                  <div className="font-semibold">Für wen</div>
-                  <div className="text-gray-600 mt-1">Betroffene & Angehörige, die praktische Hilfe suchen</div>
-                </div>
-              </div>
-            </div>
-            <aside className="bg-sky-50 rounded-2xl p-5 border">
-              <div className="text-sm font-medium text-gray-700">Kurzprofil</div>
-              <p className="mt-2 text-sm text-gray-600">
-                Sportlich aktiv (Yoga, Schwimmen, Rad). Sanfte, nachhaltige Strategien statt „No-Pain-No-Gain“.
-              </p>
-            </aside>
-          </div>
-        </section>
-
-        {/* Blog */}
-        <section id="blog" className="mt-20 bg-teal-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold">Aktuelle Artikel</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {mockPosts.map(p => (
-              <article key={p.id} className="bg-white p-5 rounded-2xl border hover:shadow transition">
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm text-gray-600">{p.excerpt}</p>
-                <a className="mt-3 inline-block text-sm text-teal-600 hover:underline" href="#">
-                  Weiterlesen →
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* E-Book / Lead Magnet */}
-        <section id="ebook" className="mt-20 bg-gradient-to-r from-sky-50 to-teal-50 p-8 rounded-2xl border">
-          <div className="md:flex md:items-center md:justify-between gap-6">
-            <div>
-              <h2 className="text-2xl font-bold">E-Book: „Fibro-Balance — Alltag neu gestalten“</h2>
-              <p className="mt-2 text-gray-700">
-                Kompakt (20–40 Seiten): meine Geschichte, praxisnahe Tipps & kleine Übungen.
-                Trage deine E-Mail ein und erhalte das PDF gratis.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubscribe} className="mt-4 md:mt-0 flex gap-2">
-              <label htmlFor="email" className="sr-only">E-Mail</label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Deine E-Mail"
-                aria-label="E-Mail"
-                className="px-4 py-2 rounded-xl border bg-white w-64"
-              />
-              <button type="submit" disabled={loading} className="px-4 py-2 rounded-xl bg-teal-500 text-white hover:bg-teal-600">
-                {loading ? 'Sende…' : 'Senden'}
-              </button>
-            </form>
-          </div>
-
-          {status && (
-            <div className={`mt-4 p-3 rounded-xl ${status.ok ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
-              {status.message}
-            </div>
-          )}
-
-          <p className="mt-4 text-xs text-gray-500">
-            Hinweis: Versand über Buttondown API.
-          </p>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600">
-          <div>© {new Date().getFullYear()} Fibro-Balance</div>
-          <div className="mt-2 md:mt-0">
-            Kontakt: <a href="mailto:behnsport@gmail.com" className="underline">behnsport@gmail.com</a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+body{
+font-family: Arial;
+margin:0;
+background:#f8f5ef;
+color:#333;
 }
+
+header{
+background:#111;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.hero{
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+button{
+background:#c9a227;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.section{
+padding:60px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Kintsugi Beziehungen</h2>
+</header>
+
+<section class="hero">
+
+<h1>Emotionale Stabilität & Beziehungsmuster verstehen</h1>
+
+<p>
+Lerne deine Bindungsmuster zu erkennen,
+Blockaden zu lösen und gesunde Beziehungen zu führen.
+</p>
+
+<button onclick="location.href='#workshop'">
+Workshop entdecken
+</button>
+
+</section>
+
+
+<section class="section">
+
+<h2>Für wen ist das?</h2>
+
+<div class="card">
+Menschen mit Verlustangst oder Vermeiderstruktur
+</div>
+
+<div class="card">
+Menschen die immer wieder ähnliche Beziehungsmuster erleben
+</div>
+
+<div class="card">
+Menschen die emotionale Stabilität entwickeln wollen
+</div>
+
+</section>
+
+
+<section id="workshop" class="section">
+
+<h2>Workshop Inhalte</h2>
+
+<ul>
+<li>Bindungsmuster verstehen</li>
+<li>Nervensystem regulieren</li>
+<li>Atemübungen & Körperarbeit</li>
+<li>Selbstwert & Grenzen</li>
+</ul>
+
+<button>
+Workshop buchen
+</button>
+
+</section>
+
+
+<section class="section">
+
+<h2>Video Übungen</h2>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/4pLUleLdwY4"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</section>
+
+
+<section class="section">
+
+<h2>Buch</h2>
+
+<p>Kintsugi Kriegerin</p>
+
+<button onclick="window.open('https://amzn.eu/d/4ZCwSxf')">
+Auf Amazon kaufen
+</button>
+
+</section>
+
+
+<section class="section">
+
+<h2>Zoom Coaching</h2>
+
+<button onclick="window.open('https://zoom.us')">
+Zoom Gespräch starten
+</button>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Kintsugi Beziehungen</p>
+
+</footer>
+
+</body>
+</html>
