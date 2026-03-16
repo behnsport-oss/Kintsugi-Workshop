@@ -1,129 +1,272 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Kintsugi Beziehungen</title>
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
-background:#f8f5ef;
+background:#f5f1ea;
 color:#333;
 }
 
 header{
-background:#111;
+background:#1c1c1c;
 color:white;
 padding:20px;
-text-align:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:14px;
 }
 
 .hero{
-padding:80px 20px;
+background:#efe7da;
+padding:100px 20px;
 text-align:center;
 }
 
 .hero h1{
-font-size:40px;
+font-size:42px;
+}
+
+.hero p{
+font-size:18px;
+max-width:600px;
+margin:auto;
 }
 
 button{
 background:#c9a227;
-color:white;
 border:none;
-padding:15px 30px;
-font-size:18px;
+padding:14px 26px;
 border-radius:8px;
+font-size:16px;
+color:white;
 cursor:pointer;
+margin-top:20px;
 }
 
 .section{
-padding:60px 20px;
 max-width:900px;
 margin:auto;
+padding:70px 20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .card{
 background:white;
-padding:20px;
-margin:20px;
+padding:25px;
 border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.video{
+text-align:center;
 }
 
 footer{
-background:#111;
+background:#1c1c1c;
 color:white;
 text-align:center;
-padding:30px;
+padding:40px;
+margin-top:60px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-<h2>Kintsugi Beziehungen</h2>
+
+<h2>Kintsugi Coaching</h2>
+
+<div>
+
+<a href="#about">Über mich</a>
+<a href="#angebot">Angebot</a>
+<a href="#blog">Blog</a>
+
+</div>
+
 </header>
 
 <section class="hero">
 
-<h1>Emotionale Stabilität & Beziehungsmuster verstehen</h1>
+<h1>Emotionale Stabilität entwickeln</h1>
 
 <p>
-Lerne deine Bindungsmuster zu erkennen,
-Blockaden zu lösen und gesunde Beziehungen zu führen.
+Verlustangst, Beziehungsmuster und innere Blockaden verstehen.
+Lerne dein Nervensystem zu regulieren und gesunde Beziehungen aufzubauen.
 </p>
 
-<button onclick="location.href='#workshop'">
-Workshop entdecken
+<button onclick="window.open('https://calendly.com')">
+
+Kostenloses Kennenlerngespräch
+
 </button>
 
 </section>
 
+<section id="about" class="section">
 
-<section class="section">
+<h2>Über mich</h2>
 
-<h2>Für wen ist das?</h2>
+<p>
+
+Ich begleite Menschen dabei Beziehungsmuster zu verstehen,
+emotionale Stabilität aufzubauen und mehr Selbstregulation
+zu entwickeln.
+
+Meine Arbeit verbindet:
+
+</p>
+
+<div class="cards">
 
 <div class="card">
-Menschen mit Verlustangst oder Vermeiderstruktur
+
+<h3>Nervensystem</h3>
+
+<p>
+Verstehen wie Stress und Bindungsmuster entstehen.
+</p>
+
 </div>
 
 <div class="card">
-Menschen die immer wieder ähnliche Beziehungsmuster erleben
+
+<h3>Körperarbeit</h3>
+
+<p>
+Atemübungen, Yoga und Regulation.
+</p>
+
 </div>
 
 <div class="card">
-Menschen die emotionale Stabilität entwickeln wollen
+
+<h3>Selbstreflexion</h3>
+
+<p>
+Beziehungsmuster erkennen und verändern.
+</p>
+
+</div>
+
 </div>
 
 </section>
 
+<section id="angebot" class="section">
 
-<section id="workshop" class="section">
+<h2>Coaching & Workshops</h2>
 
-<h2>Workshop Inhalte</h2>
+<div class="cards">
 
-<ul>
-<li>Bindungsmuster verstehen</li>
-<li>Nervensystem regulieren</li>
-<li>Atemübungen & Körperarbeit</li>
-<li>Selbstwert & Grenzen</li>
-</ul>
+<div class="card">
 
-<button>
-Workshop buchen
+<h3>1:1 Coaching</h3>
+
+<p>
+
+Emotionale Stabilität,
+Verlustangst verstehen
+und Selbstführung entwickeln.
+
+</p>
+
+<button onclick="window.open('https://calendly.com')">
+
+Termin buchen
+
 </button>
 
+</div>
+
+<div class="card">
+
+<h3>Workshops</h3>
+
+<p>
+
+Gruppenarbeit,
+Atemübungen,
+Reflexion.
+
+</p>
+
+</div>
+
+</div>
+
 </section>
 
+<section id="blog" class="section">
 
-<section class="section">
+<h2>Blog</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Verlustangst verstehen</h3>
+
+<p>
+
+Warum wir uns emotional abhängig machen.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Selbstregulation lernen</h3>
+
+<p>
+
+Atemtechniken für innere Ruhe.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Beziehungsmuster</h3>
+
+<p>
+
+Warum wir oft den gleichen Partnertyp wählen.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section video">
 
 <h2>Video Übungen</h2>
 
@@ -135,34 +278,29 @@ allowfullscreen>
 
 </section>
 
-
 <section class="section">
 
 <h2>Buch</h2>
 
-<p>Kintsugi Kriegerin</p>
+<p>
+
+Kintsugi Kriegerin – Heilung durch Selbstreflexion.
+
+</p>
 
 <button onclick="window.open('https://amzn.eu/d/4ZCwSxf')">
-Auf Amazon kaufen
+
+Buch auf Amazon
+
 </button>
 
 </section>
-
-
-<section class="section">
-
-<h2>Zoom Coaching</h2>
-
-<button onclick="window.open('https://zoom.us')">
-Zoom Gespräch starten
-</button>
-
-</section>
-
 
 <footer>
 
-<p>© 2026 Kintsugi Beziehungen</p>
+<p>© 2026 Kintsugi Coaching</p>
+
+<p>Email: behnsport@gmail.com</p>
 
 </footer>
 
