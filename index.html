@@ -3,289 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emotionale Stabilität & Energiearbeit</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<title>Emotionale Balance | Herzöffnung</title>
 <style>
   body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #0A5276, #178FA1);
-    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to bottom, #005F73, #0A9396);
+    color: #03303E;
   }
-  a { text-decoration: none; }
-
-  /* Header */
   header {
-    position: sticky;
-    top: 0;
-    background: rgba(10,82,118,0.85);
-    backdrop-filter: blur(6px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    z-index: 1000;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-  }
-  nav a {
+  header h1 { font-size: 1.8rem; color: #fff; }
+  header .buttons a {
     margin-left: 1rem;
-    padding: 0.5rem 0.9rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #83C5BE;
+    color: #03303E;
     border-radius: 8px;
-    background: #30A7C2;
-    color: white;
-    font-weight: 600;
-    transition: 0.3s;
+    font-weight: bold;
   }
-  nav a:hover {
-    background: #1F91B1;
-  }
-
-  /* Intro */
-  .intro {
-    text-align: center;
-    padding: 2.5rem 1rem;
-  }
-  .intro img {
-    width: 140px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-    border: 3px solid #30A7C2;
-  }
-  .intro h2 {
-    font-size: 2.5rem;
-    margin: 0.3rem 0;
-  }
-  .intro p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.6;
-    color: #D6EFF2;
-  }
-  .cta-primary {
-    margin-top: 1.5rem;
-    display: inline-block;
-    background: #30A7C2;
-    color: #fff;
-    padding: 0.8rem 1.8rem;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: 0.3s;
-  }
-  .cta-primary:hover {
-    background: #1F91B1;
-  }
-
-  /* Cards */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 1.8rem;
-    padding: 1rem;
-    margin: 2rem 0;
-  }
+  main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+  .intro { text-align: center; color: #fff; margin-bottom: 2rem; }
+  .intro img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; margin-bottom: 1rem; }
   .card {
-    background: linear-gradient(135deg, #30A7C2, #58C9E8);
-    color: #003B4A;
-    padding: 1.4rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-    text-align: center;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-  }
-  .card h3 {
-    margin-top: 0;
-    margin-bottom: 0.6rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
-  .card p {
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.4;
-  }
-  .card button {
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 8px;
-    background: #005F85;
-    color: #fff;
-    font-weight: 600;
+    background: linear-gradient(to bottom right, #BDE0FE, #CAF0F8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-  .card button:hover {
-    background: #144F70;
-  }
-
-  /* Video Overlay */
-  #videoOverlay {
+  .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+  .card h2 { margin-top: 0; }
+  .subcard {
+    background: linear-gradient(to right, #83C5BE, #ADE8F4);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
     display: none;
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
+    color: #03303E;
   }
-  #videoOverlay iframe {
-    width: 90%;
-    max-width: 800px;
-    height: 450px;
-  }
-  #closeVideoBtn {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    background: #003B4A;
-    color: #fff;
+  .subcard p { margin: 0.5rem 0; }
+  .subcard button {
+    padding: 0.5rem 1rem;
     border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
+    border-radius: 6px;
+    background: #005F73;
+    color: #fff;
+    font-weight: bold;
     cursor: pointer;
-    font-weight: 600;
   }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    background: #06394A;
-    padding: 1.8rem;
-    font-size: 0.95rem;
-  }
-  footer a {
-    margin: 0 0.6rem;
-    color: #91E5FF;
-    font-weight: 600;
-  }
+  footer { text-align: center; padding: 2rem 1rem; margin-top: 2rem; color: #fff; }
+  footer a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Emotionale Stabilität & Energiearbeit</h1>
-  <nav>
-    <a href="#about">Über mich</a>
-    <a href="#topics">Themen</a>
-    <a href="#book">Buch & Ressourcen</a>
-    <a href="#contact">Termin buchen</a>
-  </nav>
+  <h1>Emotionale Balance | Herzöffnung</h1>
+  <div class="buttons">
+    <a href="https://calendly.com/">Termin buchen</a>
+    <a href="#cards">Zu den Themen</a>
+  </div>
 </header>
 
 <main>
-
-  <!-- Intro mit Foto & Text -->
-  <section class="intro" id="about">
-    <img src="team-placeholder.jpg" alt="Foto von dir / Team">
-    <h2>Willkommen – �� deine Reise beginnt hier</h2>
-    <p>
-      Finde emotionale Stabilität, erkenne Beziehungsmuster und lerne, wie Körper, 
-      Nervensystem und Geist wieder in Balance finden können.  
-      Unsere Arbeit kombiniert Atemtechniken, Bewegung, Meditation und Naturerfahrungen 
-      – unterstützt von gezielten Ressourcen wie unserem Buch und Online‑Coaching.
-    </p>
-    <a href="YOUR_CALENDLY_LINK" class="cta-primary" target="_blank">Jetzt Termin buchen</a>
+  <section class="intro">
+    <img src="https://via.placeholder.com/150" alt="Behn">
+    <h2>Behn</h2>
+    <p>Gelernte Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Ich begleite Menschen mit chronischen Schmerzen, emotionalen Blockaden und Beziehungsmustern.</p>
+    <p>Unsere Philosophie: Emotionale Stabilität, Selbstheilung und Herzöffnung durch sanfte Übungen, Naturerfahrungen und Achtsamkeit.</p>
   </section>
 
-  <!-- Themenkarten -->
-  <section class="cards" id="topics">
-
-    <div class="card">
-      <h3>Chronische Schmerzen & Körperstress</h3>
-      <p>Wie dein Nervensystem Schmerzen speichert – und sanfte Wege zur Regulation und Erleichterung.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_PAIN">Video ansehen</button>
+  <section id="cards">
+    <div class="card" onclick="toggleSubcard('sub1')">
+      <h2>Chronische Schmerzen & Körperstress</h2>
+      <div id="sub1" class="subcard">
+        <p>Atemübungen, Meditation und leichte Bewegung zur Entlastung von Körperstress.</p>
+        <button onclick="openVideo('https://www.youtube.com/embed/videoseries?list=PLVFghMxXNOFooPbDk7kyMYF3qxsrwtG9f')">Video ansehen</button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Bindungstrauma & Beziehungsmuster</h3>
-      <p>Warum wir immer wieder ähnliche Beziehungsmuster erleben und wie du sie durchbrichst.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_RELATIONSHIP">Video ansehen</button>
+    <div class="card" onclick="toggleSubcard('sub2')">
+      <h2>Bindungstrauma & Beziehungsmuster</h2>
+      <div id="sub2" class="subcard">
+        <p>Emotionale Blockaden erkennen, Wiederholungen in schwierigen Beziehungen vermeiden.</p>
+        <button onclick="openVideo('https://www.youtube.com/embed/x3q_J-DSKZY')">Video ansehen</button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Verlustangst & Erschöpfung</h3>
-      <p>Was Verlustangst im Körper macht und wie du wieder innere Ruhe findest.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_LOSS">Video ansehen</button>
+    <div class="card" onclick="toggleSubcard('sub3')">
+      <h2>Nervensystemstress & emotionale Erschöpfung</h2>
+      <div id="sub3" class="subcard">
+        <p>Meditation, Naturerfahrung, sanfte Bewegung & Herzöffnung.</p>
+        <button onclick="openVideo('https://www.youtube.com/embed/qRNZAuY82E0')">Video ansehen</button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Nervensystemstress regulieren</h3>
-      <p>Atemübungen, Breathwork und einfache Tools, damit dein Nervensystem zur Ruhe kommt.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_BREATH">Video ansehen</button>
+    <div class="card" onclick="toggleSubcard('sub4')">
+      <h2>Verlustangst & Selbstwert</h2>
+      <div id="sub4" class="subcard">
+        <p>Stärkung des Selbstwerts, emotionale Stabilisierung, Umgang mit Verlustangst.</p>
+        <button onclick="openVideo('https://www.youtube.com/embed/CeM4iIJ_Yhg')">Video ansehen</button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Selbstwert & innere Stärke</h3>
-      <p>Schritte zur Stärkung deines Selbstwertgefühls und emotionalen Gleichgewichts.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_SELF">Video ansehen</button>
+    <div class="card" onclick="toggleSubcard('sub5')">
+      <h2>Paartherapie & Liebeskummer</h2>
+      <div id="sub5" class="subcard">
+        <p>Herzöffnung, emotionale Stabilität aufbauen, kurze Animationen und Reels.</p>
+        <button onclick="openVideo('https://www.youtube.com/embed/abcd1234')">Video ansehen</button>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Naturarbeit & Eisbaden</h3>
-      <p>Wie Naturerfahrungen und Kältearbeit Körper und Geist neu ausrichten können.</p>
-      <button data-video="https://www.youtube.com/embed/VIDEO_ID_NATURE">Video ansehen</button>
-    </div>
-
   </section>
-
-  <!-- Buch & Ressourcen -->
-  <section class="intro" id="book">
-    <h2>Buch & Ressourcen</h2>
-    <p>
-      Unser Buch bietet zusätzliche Tiefe zu diesen Themen –
-      inklusive Übungen für chronische Schmerzen, Beziehungsmuster und Selbstführung.
-    </p>
-    <a href="https://amzn.eu/d/4ZCwSxf" class="cta-primary" target="_blank">Buch auf Amazon ansehen</a>
-  </section>
-
-  <!-- Termin buchen -->
-  <section style="text-align:center; margin:3rem 0;" id="contact">
-    <h2>Termin buchen</h2>
-    <p>Buche dein persönliches Gespräch via Zoom oder Calendly.</p>
-    <a href="YOUR_CALENDLY_LINK" class="cta-primary" target="_blank">Termin vereinbaren</a>
-  </section>
-
 </main>
 
-<!-- Video Overlay -->
-<div id="videoOverlay">
-  <button id="closeVideoBtn">Schließen</button>
-  <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
-</div>
-
 <footer>
-  <p>Folge uns:</p>
-  <a href="https://instagram.com/YOUR_USERNAME" target="_blank">Instagram</a>
-  <a href="https://tiktok.com/@YOUR_USERNAME" target="_blank">TikTok</a>
-  <a href="https://youtube.com" target="_blank">YouTube</a>
-  <p>© 2026 Emotionale Stabilität & Energiearbeit</p>
+  <p>Folge uns auf:</p>
+  <a href="https://instagram.com/dorje.wulf" target="_blank">Instagram</a>
+  <a href="https://www.tiktok.com/@dorje.wulf" target="_blank">TikTok</a>
+  <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+  <p>© 2026 Behnabalance</p>
 </footer>
 
 <script>
-  const overlay = document.getElementById('videoOverlay');
-  const frame = document.getElementById('videoFrame');
-  const closeBtn = document.getElementById('closeVideoBtn');
-
-  document.querySelectorAll('button[data-video]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      frame.src = btn.dataset.video + "?autoplay=1&rel=0";
-      overlay.style.display = "flex";
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    frame.src = "";
-    overlay.style.display = "none";
-  });
+  function toggleSubcard(id) {
+    const sub = document.getElementById(id);
+    sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+  }
+  function openVideo(url) {
+    window.open(url, '_blank');
+  }
 </script>
 
 </body>
