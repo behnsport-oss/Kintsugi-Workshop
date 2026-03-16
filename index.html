@@ -1,334 +1,206 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Kintsugi Coaching – Emotionale Stabilität</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emotionale Stabilität & Energiearbeit</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1E3A5F; /* Dunkelblau */
+    color: #fff;
+  }
 
-body{
-font-family:'Lato',sans-serif;
-margin:0;
-background:#f4f7fb;
-color:#2b2b2b;
-}
+  header {
+    background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 { color: #fff; font-weight: 700; font-size: 1.8rem; }
+  .header-links a {
+    margin-left: 1rem;
+    color: #F2C94C;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: #1E3A5F;
+    border: 1px solid #F2C94C;
+    transition: 0.3s;
+  }
+  .header-links a:hover {
+    background-color: #F2C94C;
+    color: #1E3A5F;
+  }
 
-h1,h2,h3{
-font-family:'Playfair Display',serif;
-}
+  main { max-width: 1200px; margin: auto; padding: 2rem; }
+  section { margin-bottom: 3rem; }
+  .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #F2C94C; }
 
-header{
-background:white;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 12px rgba(0,0,0,0.05);
-}
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
 
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:#2b2b2b;
-}
+  .card {
+    flex: 1 1 280px;
+    background: linear-gradient(145deg, #D9F0F0, #B2E0E0); /* sanfter Farbverlauf Türkis */
+    color: #1E3A5F;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+  .card h3 { margin-top: 0; color: #1E3A5F; font-weight: 700; }
+  .card p { color: #1E3A5F; margin-bottom: 0.5rem; }
+  .card iframe, .card video { width: 100%; border-radius: 0.5rem; margin-top: 0.5rem; }
 
-.hero{
-background:linear-gradient(#e8f1fb,#f4f7fb);
-padding:100px 20px;
-text-align:center;
-}
+  .cta-button {
+    display: inline-block;
+    background-color: #F2C94C;
+    color: #1E3A5F;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 1px solid #D9AA38;
+  }
+  .cta-button:hover { background-color: #D9AA38; color: #fff; }
 
-.hero h1{
-font-size:42px;
-}
+  footer {
+    background-color: #16283A;
+    text-align: center;
+    padding: 2rem;
+    color: #B3E0E0;
+  }
 
-.hero p{
-max-width:600px;
-margin:auto;
-font-size:18px;
-}
+  .card video:hover { transform: scale(1.03); transition: 0.3s; }
 
-button{
-background:#d4af37;
-border:none;
-padding:14px 28px;
-border-radius:8px;
-color:white;
-font-size:16px;
-cursor:pointer;
-margin-top:20px;
-}
-
-.section{
-max-width:900px;
-margin:auto;
-padding:70px 20px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:#e9f2fb;
-padding:25px;
-border-radius:12px;
-box-shadow:0 6px 18px rgba(0,0,0,0.06);
-}
-
-.blog-card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
-}
-
-.video{
-text-align:center;
-}
-
-footer{
-background:#2b2b2b;
-color:white;
-text-align:center;
-padding:40px;
-margin-top:60px;
-}
-
+  @media (max-width: 768px) {
+    .cards { flex-direction: column; }
+  }
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<h2>Kintsugi Coaching</h2>
-
-<nav>
-
-<a href="#about">Über mich</a>
-<a href="#methoden">Methoden</a>
-<a href="#blog">Blog</a>
-<a href="#termin">Termin</a>
-
-</nav>
-
+  <h1>Emotionale Stabilität</h1>
+  <div class="header-links">
+    <a href="https://zoom.us/j/DEINMEETINGLINK" target="_blank">Zoom verbinden</a>
+    <a href="https://www.instagram.com/dorje.wulf/" target="_blank">Instagram</a>
+    <a href="https://amzn.eu/d/4ZCwSxf" target="_blank">Amazon Buch</a>
+  </div>
 </header>
 
-
-<section class="hero">
-
-<h1>Emotionale Stabilität entwickeln</h1>
-
-<p>
-
-Verlustangst, Beziehungsmuster und emotionale Blockaden verstehen.  
-Lerne dein Nervensystem zu regulieren und gesunde Beziehungen aufzubauen.
-
-</p>
-
-<button onclick="document.getElementById('termin').scrollIntoView()">
-
-Kennenlerngespräch buchen
-
-</button>
-
-</section>
-
-
-<section id="about" class="section">
-
-<h2>Über mich</h2>
-
-<p>
-
-Ich begleite Menschen dabei emotionale Muster zu verstehen,  
-innere Stabilität zu entwickeln und ihr Nervensystem besser zu regulieren.
-
-Meine Arbeit verbindet Körperarbeit, Atemtechniken und Selbstreflexion.
-
-</p>
-
-</section>
-
-
-<section id="methoden" class="section">
-
-<h2>Methoden</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Breathwork</h3>
-
-<p>
-
-Atemtechniken helfen das Nervensystem zu beruhigen und emotionale Spannungen zu lösen.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Qi Gong</h3>
-
-<p>
-
-Langsame Bewegungen fördern Körperbewusstsein und innere Balance.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Tai Chi</h3>
-
-<p>
-
-Meditative Bewegung zur Regulation von Stress und innerer Stabilität.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Freie Bewegung</h3>
-
-<p>
-
-Tanz und Bewegung helfen emotionale Blockaden im Körper zu lösen.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section id="blog" class="section">
-
-<h2>Blog</h2>
-
-<div class="cards">
-
-<div class="blog-card">
-
-<h3>Verlustangst verstehen</h3>
-
-<p>
-
-Warum wir Angst haben verlassen zu werden und wie emotionale Abhängigkeit entsteht.
-
-</p>
-
-<a href="#">Video ansehen</a>
-
-</div>
-
-<div class="blog-card">
-
-<h3>Vermeider erkennen</h3>
-
-<p>
-
-Warum manche Menschen Nähe vermeiden und emotionalen Abstand halten.
-
-</p>
-
-<a href="#">Mehr lesen</a>
-
-</div>
-
-<div class="blog-card">
-
-<h3>Nervensystem regulieren</h3>
-
-<p>
-
-Einfache Atemübungen um Stress zu reduzieren.
-
-</p>
-
-<a href="#">Übung ansehen</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section video">
-
-<h2>Video Übung</h2>
-
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/4pLUleLdwY4"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</section>
-
-
-<section class="section">
-
-<h2>Buch</h2>
-
-<p>
-
-Kintsugi – Heilung durch Selbstreflexion und innere Arbeit.
-
-</p>
-
-<button onclick="window.open('https://amzn.eu/d/4ZCwSxf')">
-
-Buch auf Amazon ansehen
-
-</button>
-
-</section>
-
-
-<section id="termin" class="section">
-
-<h2>Termin buchen</h2>
-
-<p>
-
-Buche ein Kennenlerngespräch über Calendly oder Zoom.
-
-</p>
-
-<button onclick="window.open('https://calendly.com')">
-
-Termin vereinbaren
-
-</button>
-
-</section>
-
+<main>
+
+  <!-- Hero -->
+  <section>
+    <h2 class="section-title">Willkommen zu deinem inneren Ausgleich</h2>
+    <p>Sanfte Bewegungen, Atemübungen und Naturerfahrungen, um Blockaden zu lösen und emotionale Balance zu finden.</p>
+    <a href="#ebooks" class="cta-button">Kostenloses E-Book sichern</a>
+  </section>
+
+  <!-- Themen Cards harmonische Reihenfolge -->
+  <section>
+    <h2 class="section-title">Unsere Übungen & Energiearbeit</h2>
+    <div class="cards">
+      <!-- Taichi -->
+      <div class="card" onclick="window.open('taichi-short.mp4', '_blank')">
+        <h3>Taichi</h3>
+        <video controls poster="placeholder.jpg">
+          <source src="taichi-short.mp4" type="video/mp4">
+        </video>
+        <p>Sanfte Bewegungen, um den Energiefluss zu harmonisieren.</p>
+      </div>
+
+      <!-- Breathwork -->
+      <div class="card" onclick="window.open('breathwork-short.mp4', '_blank')">
+        <h3>Breathwork</h3>
+        <video controls poster="placeholder.jpg">
+          <source src="breathwork-short.mp4" type="video/mp4">
+        </video>
+        <p>Atemübungen für emotionale Klarheit und Ruhe.</p>
+      </div>
+
+      <!-- Meditation -->
+      <div class="card" onclick="window.open('meditation-short.mp4', '_blank')">
+        <h3>Meditation</h3>
+        <video controls poster="placeholder.jpg">
+          <source src="meditation-short.mp4" type="video/mp4">
+        </video>
+        <p>Geführte Meditation zur Stabilisierung der Emotionen.</p>
+      </div>
+
+      <!-- Yoga -->
+      <div class="card" onclick="window.open('yoga-short.mp4', '_blank')">
+        <h3>Yoga</h3>
+        <video controls poster="placeholder.jpg">
+          <source src="yoga-short.mp4" type="video/mp4">
+        </video>
+        <p>Sanfte Bewegungen für Körper und Geist.</p>
+      </div>
+
+      <!-- Natur & Energiearbeit -->
+      <div class="card" onclick="window.open('nature-energy.mp4', '_blank')">
+        <h3>Natur & Energiearbeit</h3>
+        <video controls poster="placeholder.jpg">
+          <source src="nature-energy.mp4" type="video/mp4">
+        </video>
+        <p>Wandern, Bäume umarmen, Energiearbeit draußen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / Tipps -->
+  <section id="blog">
+    <h2 class="section-title">Blog & Tipps</h2>
+    <div class="cards">
+      <div class="card" onclick="window.open('emotionale-blockaden-short.mp4', '_blank')">
+        <h3>Emotionale Blockaden verstehen</h3>
+        <p>Kurze Erklärungen, Video-Shorts und Praxis-Tipps.</p>
+      </div>
+      <div class="card" onclick="window.open('gesund-bleiben-short.mp4', '_blank')">
+        <h3>Gesund bleiben</h3>
+        <p>Ernährung, Schlaf, sanfte Routinen für mehr Energie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-Book -->
+  <section id="ebooks">
+    <h2 class="section-title">E-Book & Ressourcen</h2>
+    <p>Trage deine E-Mail ein und erhalte das PDF gratis.</p>
+    <form onsubmit="alert('Danke, E-Mail eingetragen!'); return false;">
+      <input type="email" placeholder="Deine E-Mail" required style="padding:0.5rem; border-radius:8px; border:none; width:250px;">
+      <button type="submit" class="cta-button">Senden</button>
+    </form>
+  </section>
+
+</main>
 
 <footer>
-
-<p>© 2026 Kintsugi Coaching</p>
-
-<p>Email: behnsport@gmail.com</p>
-
+  © 2026 Emotionale Stabilität & Energiearbeit | Kontakt: info@dein-coaching.de
 </footer>
 
 </body>
