@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emotionale Balance & Herzöffnung</title>
+<title>Emotionale Balance | Herzöffnung</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(180deg, #005f73, #0a9396);
-    color: #fff;
+    color: #03303E;
   }
   a { text-decoration: none; color: inherit; }
   header {
@@ -35,25 +35,36 @@
     transition: all 0.3s;
   }
   header nav a:hover { background: #ee9b00; color: #fff; }
+
   main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-  .intro { text-align: center; margin-bottom: 3rem; }
+  .intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #fff;
+  }
   .intro img { width: 150px; border-radius: 50%; margin-bottom: 1rem; }
-  .intro h2 { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0; }
+  .intro h2 { font-size: 2.5rem; margin: 0.5rem 0; }
   .intro p { font-size: 1.1rem; color: #d9f0f0; }
 
-  /* Karten */
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+  /* Karten-Grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
   .card {
     background: linear-gradient(to bottom right, #BDE0FE, #CAF0F8);
     color: #03303E;
     border-radius: 16px;
     padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     position: relative;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-  .card h3 { margin-top: 0; margin-bottom: 0.5rem; }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+  .card h3 { margin-top: 0; }
   .card p { margin: 0.5rem 0; }
   .card button {
     margin-top: 1rem;
@@ -61,19 +72,29 @@
     border: none;
     border-radius: 8px;
     background: #94d2bd;
-    color: #03303E;
+    color: #005f73;
     font-weight: 600;
     cursor: pointer;
   }
 
   /* Unterkarten */
   .subcard {
-    display: none;
-    margin-top: 0.5rem;
-    padding: 1rem;
-    border-radius: 12px;
     background: linear-gradient(to right, #83C5BE, #ADE8F4);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    display: none;
     color: #03303E;
+  }
+  .subcard p { margin: 0.5rem 0; }
+  .subcard button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: #005F73;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   /* Video Overlay */
@@ -81,8 +102,9 @@
     display: none;
     position: fixed;
     top:0; left:0;
-    width:100%; height:100%;
-    background: rgba(0,0,0,0.8);
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
     z-index: 2000;
@@ -100,8 +122,13 @@
     cursor: pointer;
   }
 
-  footer { text-align: center; padding: 2rem; background: #005f73; color: #fff; }
-  footer a { margin: 0 0.5rem; color: #94d2bd; }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: #005f73;
+    color: #fff;
+  }
+  footer a { margin: 0 0.5rem; color: #94d2bd; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -110,73 +137,59 @@
   <h1>Emotionale Balance | Herzöffnung</h1>
   <nav>
     <a href="#about">Über mich</a>
-    <a href="#cards">Themen</a>
-    <a href="#contact">Termin buchen</a>
+    <a href="#sessions">Themen</a>
+    <a href="https://calendly.com/" target="_blank">Termin buchen</a>
   </nav>
 </header>
 
 <main>
-  <!-- Intro -->
   <section class="intro" id="about">
     <img src="https://via.placeholder.com/150" alt="Behn">
     <h2>Behn</h2>
-    <p>Ich bin Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren, begleite chronisch kranke Menschen und begleite emotionale Blockaden.</p>
-    <p>Unsere Philosophie: Herzöffnung und emotionale Stabilität durch sanfte Übungen, Atemarbeit, Meditation, Naturerfahrungen.</p>
+    <p>Gelernte Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Ich begleite Menschen mit chronischen Schmerzen, emotionalen Blockaden und Beziehungsmustern.</p>
+    <p>Unsere Philosophie: Emotionale Stabilität, Selbstheilung und Herzöffnung durch sanfte Übungen, Naturerfahrungen und Achtsamkeit.</p>
   </section>
 
-  <!-- Hauptkarten / Themen -->
-  <section class="cards" id="cards">
+  <section class="cards" id="sessions">
     <div class="card" onclick="toggleSubcard('sub1')">
       <h3>Chronische Schmerzen & Körperstress</h3>
-      <p>Blockaden lösen, Beweglichkeit & Ruhe fördern.</p>
       <div id="sub1" class="subcard">
-        <p>Atemübungen und Meditation zur Entlastung von Körperstress.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID1')">Video ansehen</button>
+        <p>Atemübungen, Meditation und leichte Bewegung zur Entlastung von Körperstress.</p>
+        <button data-video="https://www.youtube.com/embed/videoseries?list=PLVFghMxXNOFooPbDk7kyMYF3qxsrwtG9f">Video ansehen</button>
       </div>
     </div>
 
     <div class="card" onclick="toggleSubcard('sub2')">
       <h3>Bindungstrauma & Beziehungsmuster</h3>
-      <p>Emotionale Abhängigkeit erkennen, gesunde Muster entwickeln.</p>
       <div id="sub2" class="subcard">
-        <p>Kurze Erklärung zu Bindungstrauma, Übungen und Naturerlebnisse.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID2')">Video ansehen</button>
+        <p>Emotionale Blockaden erkennen, Wiederholungen in schwierigen Beziehungen vermeiden.</p>
+        <button data-video="https://www.youtube.com/embed/x3q_J-DSKZY">Video ansehen</button>
       </div>
     </div>
 
     <div class="card" onclick="toggleSubcard('sub3')">
       <h3>Nervensystemstress & emotionale Erschöpfung</h3>
-      <p>Stärkung von Resilienz und Ruhe.</p>
       <div id="sub3" class="subcard">
-        <p>Meditation, Spaziergänge und sanfte Bewegung zur Stabilisierung.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID3')">Video ansehen</button>
+        <p>Meditation, Naturerfahrung, sanfte Bewegung & Herzöffnung.</p>
+        <button data-video="https://www.youtube.com/embed/qRNZAuY82E0">Video ansehen</button>
       </div>
     </div>
 
     <div class="card" onclick="toggleSubcard('sub4')">
       <h3>Verlustangst & Selbstwert</h3>
-      <p>Selbstwert stärken, emotionale Stabilität aufbauen.</p>
       <div id="sub4" class="subcard">
-        <p>Praktische Übungen und Atemarbeit.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID4')">Video ansehen</button>
+        <p>Stärkung des Selbstwerts, emotionale Stabilisierung, Umgang mit Verlustangst.</p>
+        <button data-video="https://www.youtube.com/embed/CeM4iIJ_Yhg">Video ansehen</button>
       </div>
     </div>
 
     <div class="card" onclick="toggleSubcard('sub5')">
       <h3>Paartherapie & Liebeskummer</h3>
-      <p>Herzöffnung, Beziehungsmuster erkennen.</p>
       <div id="sub5" class="subcard">
-        <p>Kurze Animation / Reel für emotionale Stabilität.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID5')">Video ansehen</button>
+        <p>Herzöffnung, emotionale Stabilität aufbauen, kurze Animationen und Reels.</p>
+        <button data-video="https://www.youtube.com/embed/abcd1234">Video ansehen</button>
       </div>
     </div>
-  </section>
-
-  <!-- Terminbuchung -->
-  <section id="contact" style="text-align:center; margin-bottom:3rem;">
-    <h2>Jetzt Termin buchen</h2>
-    <p>Direkt über Zoom oder Calendly verbinden</p>
-    <a href="YOUR_CALENDLY_LINK" target="_blank" style="background:#ee9b00; color:#fff; padding:1rem 2rem; border-radius:12px; font-weight:600;">Termin buchen</a>
   </section>
 </main>
 
@@ -187,12 +200,12 @@
 </div>
 
 <footer>
-  <p>Folge uns: 
-    <a href="https://instagram.com/dorje.wulf" target="_blank">Instagram</a> | 
-    <a href="https://tiktok.com/@dorje.wulf" target="_blank">TikTok</a> | 
-    <a href="https://youtube.com" target="_blank">YouTube</a>
+  <p>Folge uns auf:
+    <a href="https://instagram.com/dorje.wulf" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@dorje.wulf" target="_blank">TikTok</a>
+    <a href="https://www.youtube.com/" target="_blank">YouTube</a>
   </p>
-  <p>© 2026 Emotionale Balance</p>
+  <p>© 2026 Behnabalance</p>
 </footer>
 
 <script>
@@ -200,15 +213,18 @@
     const sub = document.getElementById(id);
     sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
   }
-  function openVideo(url) {
-    const overlay = document.getElementById('videoOverlay');
-    const iframe = overlay.querySelector('iframe');
-    iframe.src = url;
-    overlay.style.display = 'flex';
-  }
-  document.getElementById('closeVideo').addEventListener('click', () => {
-    const overlay = document.getElementById('videoOverlay');
-    overlay.querySelector('iframe').src = '';
+  const overlay = document.getElementById('videoOverlay');
+  const iframe = overlay.querySelector('iframe');
+  const closeBtn = document.getElementById('closeVideo');
+  document.querySelectorAll('.subcard button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      iframe.src = btn.getAttribute('data-video');
+      overlay.style.display = 'flex';
+    });
+  });
+  closeBtn.addEventListener('click', () => {
+    iframe.src = '';
     overlay.style.display = 'none';
   });
 </script>
