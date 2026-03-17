@@ -3,70 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emotionale Balance | Herzöffnung</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<title>LiaVia | Emotionale Balance</title>
 
 <style>
 body {
   margin:0;
-  font-family:'Roboto',sans-serif;
+  font-family:Arial, sans-serif;
   background:linear-gradient(to bottom,#005f73,#0a9396);
   color:#fff;
 }
 
-/* Header */
-header {
-  display:flex;
-  justify-content:space-between;
-  padding:1rem 2rem;
-  background:rgba(0,0,0,0.2);
-  position:sticky;
-  top:0;
-}
-header a {
-  background:#94d2bd;
-  padding:0.5rem 1rem;
-  border-radius:8px;
-  color:#003845;
-  margin-left:10px;
-}
-
-/* Hero */
-.hero {
-  text-align:center;
-  padding:4rem 2rem;
-}
-.hero h1 {font-size:2.8rem;}
-.hero p {color:#d9f0f0;}
-.hero a {
-  display:inline-block;
-  margin:1rem;
-  padding:1rem 2rem;
-  background:#ee9b00;
-  border-radius:12px;
-}
-
-/* Cards */
+/* Layout */
 .section {max-width:1100px;margin:auto;padding:2rem;}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1.5rem;
+h2 {margin-bottom:1rem;}
+
+/* Profil Box */
+.profile {
+  display:flex;
+  gap:2rem;
+  background:rgba(255,255,255,0.15);
+  padding:1.5rem;
+  border-radius:15px;
+  margin-bottom:2rem;
+  align-items:center;
 }
+.profile img {
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* Karten */
 .card {
   background:linear-gradient(#caf0f8,#ade8f4);
   color:#003845;
   padding:1.5rem;
   border-radius:15px;
-  cursor:pointer;
+  margin-bottom:1rem;
 }
-.subcard {
+
+.subcard, .subcard2 {
   display:none;
-  margin-top:10px;
-  background:#fff;
+  margin-top:1rem;
+  background:#ffffff;
+  color:#003845;
   padding:1rem;
   border-radius:10px;
 }
+
 button {
   margin-top:10px;
   padding:0.5rem 1rem;
@@ -74,137 +59,143 @@ button {
   color:#fff;
   border:none;
   border-radius:6px;
+  cursor:pointer;
 }
-
-/* Intro */
-.intro {
-  display:flex;
-  gap:2rem;
-  align-items:center;
-  flex-wrap:wrap;
-}
-.intro img {width:150px;border-radius:50%;}
 
 /* Video Overlay */
 .overlay {
   display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:0;left:0;
+  width:100%;height:100%;
   background:rgba(0,0,0,0.8);
   justify-content:center;
   align-items:center;
 }
 .overlay iframe {width:80%;height:400px;}
-.overlay button {position:absolute;top:20px;right:20px;background:red;}
-
-/* Footer */
-footer {text-align:center;padding:2rem;}
+.overlay button {position:absolute;top:20px;right:20px;}
 </style>
 </head>
 
 <body>
 
-<header>
-  <div>Emotionale Balance</div>
+<div class="section">
+
+<h2>Über uns</h2>
+
+<!-- PROFIL 1 -->
+<div class="profile">
+  <img src="https://randomuser.me/api/portraits/women/44.jpg">
   <div>
-    <a href="#">Termin buchen</a>
-    <a href="#themen">Übungen</a>
+    <h3>LiaVia</h3>
+    <p>Gesundheitsberaterin & Yoga-Lehrerin seit über 20 Jahren. 
+    Ich arbeite mit Menschen, die unter chronischen Schmerzen, emotionalem Stress 
+    und Beziehungsmustern leiden. Mein Fokus liegt auf Nervensystem-Regulation, 
+    Atemarbeit und alltagstauglichen Methoden.</p>
   </div>
-</header>
+</div>
 
-<section class="hero">
-  <h1>Emotionale Balance & Herzöffnung</h1>
-  <p>Für Menschen mit Stress, Schmerzen und emotionalen Blockaden</p>
-  <a href="#">Termin buchen</a>
-  <a href="#themen">Übungen starten</a>
-</section>
-
-<section class="section intro">
-  <img src="https://via.placeholder.com/150">
+<!-- PROFIL 2 -->
+<div class="profile">
+  <img src="https://randomuser.me/api/portraits/women/68.jpg">
   <div>
-    <h2>LiaVia</h2>
-    <p>Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Begleitung bei chronischen Schmerzen und emotionalen Blockaden.</p>
+    <h3>Mitarbeiterin</h3>
+    <p>Begleitung in emotionalen Prozessen, Fokus auf Selbstwert, 
+    Beziehungsmuster und Stabilisierung in schwierigen Lebensphasen. 
+    Arbeit mit achtsamen Übungen, Meditation und Körperwahrnehmung.</p>
   </div>
-</section>
+</div>
 
-<section class="section">
-  <div class="card">
-    <h3>Philosophie</h3>
-    <p>Emotionale Stabilität entsteht durch Verbindung von Körper, Atem und Bewusstsein.</p>
-  </div>
-</section>
+</div>
 
-<section class="section cards" id="themen">
+<!-- THEMEN -->
+<div class="section">
 
-  <div class="card" onclick="toggle('c1')">
-    <h3>Chronische Schmerzen</h3>
-    <p>Körperstress verstehen</p>
-    <div id="c1" class="subcard">
-      <p>Atemübungen & Bewegung</p>
-      <button onclick="play(event,'https://www.youtube.com/embed/T65M1VxJlT0')">Video</button>
+<h2>Hauptthemen</h2>
+
+<!-- HAUPTBOX -->
+<div class="card">
+  <h3>Bindungstrauma & Beziehungsmuster</h3>
+  <p>Wiederkehrende Konflikte, emotionale Abhängigkeit oder Rückzug 
+  entstehen oft durch unbewusste Bindungsmuster.</p>
+
+  <ul>
+    <li>Verlustangst (klammern, Angst vor Verlassenwerden)</li>
+    <li>Vermeidung (Rückzug, Distanz, emotionale Kälte)</li>
+  </ul>
+
+  <button onclick="toggle('sub1')">Muster verstehen</button>
+
+  <!-- SUBBOX 1 -->
+  <div id="sub1" class="subcard">
+    <h4>Typische Dynamik</h4>
+    <p>Verlustängstliche Menschen suchen Nähe, während vermeidende 
+    Distanz aufbauen – ein Kreislauf entsteht.</p>
+
+    <button onclick="toggle('sub1b')">Passende Übungen</button>
+
+    <!-- SUBBOX 2 -->
+    <div id="sub1b" class="subcard2">
+      <p>Atemübungen zur Regulation + Selbstwahrnehmung</p>
+
+      <button onclick="play(event,'https://www.youtube.com/embed/T65M1VxJlT0')">
+        Video starten
+      </button>
     </div>
   </div>
+</div>
 
-  <div class="card" onclick="toggle('c2')">
-    <h3>Bindungstrauma</h3>
-    <div id="c2" class="subcard">
-      <p>Beziehungsmuster erkennen</p>
-      <button onclick="play(event,'https://www.youtube.com/embed/IdUrixeWbis')">Video</button>
+<!-- CHRONISCHE SCHMERZEN -->
+<div class="card">
+  <h3>Chronische Schmerzen & Körperstress</h3>
+  <p>Dauerhafte Anspannung im Nervensystem kann Schmerzen verstärken 
+  oder aufrechterhalten.</p>
+
+  <button onclick="toggle('sub2')">Mehr erfahren</button>
+
+  <div id="sub2" class="subcard">
+    <p>Sanfte Methoden zur Entlastung:</p>
+    <ul>
+      <li>Atemübungen</li>
+      <li>leichte Bewegung</li>
+      <li>Meditation</li>
+    </ul>
+
+    <button onclick="toggle('sub2b')">Übung öffnen</button>
+
+    <div id="sub2b" class="subcard2">
+      <p>Beruhigende Atemtechnik für das Nervensystem</p>
+
+      <button onclick="play(event,'https://www.youtube.com/embed/A7570Q8JrE0')">
+        Video starten
+      </button>
     </div>
   </div>
+</div>
 
-  <div class="card" onclick="toggle('c3')">
-    <h3>Nervensystemstress</h3>
-    <div id="c3" class="subcard">
-      <p>Meditation & Regulation</p>
-      <button onclick="play(event,'https://www.youtube.com/embed/A7570Q8JrE0')">Video</button>
-    </div>
-  </div>
+</div>
 
-</section>
-
-<section class="section">
-  <div class="card">
-    <h3>Buch</h3>
-    <p>Fibromyalgie & Selbstheilung</p>
-    <a href="https://amzn.eu/d/4ZCwSxf" target="_blank">Zum Buch</a>
-  </div>
-</section>
-
-<section class="section" style="text-align:center;">
-  <h2>Jetzt Termin buchen</h2>
-  <a href="#">Zoom / Calendly</a>
-</section>
-
+<!-- VIDEO -->
 <div class="overlay" id="overlay">
   <button onclick="closeVideo()">X</button>
   <iframe src=""></iframe>
 </div>
 
-<footer>
-  <p>
-    <a href="#">Instagram</a> |
-    <a href="#">TikTok</a> |
-    <a href="#">YouTube</a>
-  </p>
-</footer>
-
 <script>
 function toggle(id){
   let el=document.getElementById(id);
-  el.style.display=el.style.display==="block"?"none":"block";
+  el.style.display = el.style.display==="block"?"none":"block";
 }
+
 function play(e,url){
   e.stopPropagation();
-  document.getElementById('overlay').style.display='flex';
-  document.querySelector('iframe').src=url;
+  document.getElementById("overlay").style.display="flex";
+  document.querySelector("iframe").src=url;
 }
+
 function closeVideo(){
-  document.getElementById('overlay').style.display='none';
-  document.querySelector('iframe').src='';
+  document.getElementById("overlay").style.display="none";
+  document.querySelector("iframe").src="";
 }
 </script>
 
