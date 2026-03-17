@@ -5,225 +5,207 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emotionale Balance | Herzöffnung</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-  body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #005F73, #0A9396);
-    color: #03303E;
-  }
-  a { text-decoration: none; color: inherit; }
+body {
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  background:linear-gradient(to bottom,#005f73,#0a9396);
+  color:#fff;
+}
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  header h1 { font-size: 1.8rem; color: #fff; }
-  header .buttons a {
-    margin-left: 1rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    background: #83C5BE;
-    color: #03303E;
-    border-radius: 8px;
-    font-weight: bold;
-  }
+/* Header */
+header {
+  display:flex;
+  justify-content:space-between;
+  padding:1rem 2rem;
+  background:rgba(0,0,0,0.2);
+  position:sticky;
+  top:0;
+}
+header a {
+  background:#94d2bd;
+  padding:0.5rem 1rem;
+  border-radius:8px;
+  color:#003845;
+  margin-left:10px;
+}
 
-  main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+/* Hero */
+.hero {
+  text-align:center;
+  padding:4rem 2rem;
+}
+.hero h1 {font-size:2.8rem;}
+.hero p {color:#d9f0f0;}
+.hero a {
+  display:inline-block;
+  margin:1rem;
+  padding:1rem 2rem;
+  background:#ee9b00;
+  border-radius:12px;
+}
 
-  /* Intro / Philosophie */
-  .intro {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to right, #ADE8F4, #BDE0FE);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    color: #03303E;
-  }
-  .intro img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; margin-right: 2rem; }
-  .intro .text { max-width: 600px; }
+/* Cards */
+.section {max-width:1100px;margin:auto;padding:2rem;}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.card {
+  background:linear-gradient(#caf0f8,#ade8f4);
+  color:#003845;
+  padding:1.5rem;
+  border-radius:15px;
+  cursor:pointer;
+}
+.subcard {
+  display:none;
+  margin-top:10px;
+  background:#fff;
+  padding:1rem;
+  border-radius:10px;
+}
+button {
+  margin-top:10px;
+  padding:0.5rem 1rem;
+  background:#005f73;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+}
 
-  .card {
-    background: linear-gradient(to bottom right, #BDE0FE, #CAF0F8);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-  .card h2 { margin-top: 0; }
-  .subcard {
-    background: linear-gradient(to right, #83C5BE, #ADE8F4);
-    padding: 1rem;
-    margin-top: 0.5rem;
-    border-radius: 8px;
-    display: none;
-    color: #03303E;
-  }
-  .subcard p { margin: 0.5rem 0; }
-  .subcard button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    background: #005F73;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-  }
+/* Intro */
+.intro {
+  display:flex;
+  gap:2rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.intro img {width:150px;border-radius:50%;}
 
-  /* Video Overlay */
-  .video-overlay {
-    display: none;
-    position: fixed;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  .video-overlay iframe {
-    width: 90%;
-    max-width: 800px;
-    height: 450px;
-  }
-  .video-overlay button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ee9b00;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+/* Video Overlay */
+.overlay {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+}
+.overlay iframe {width:80%;height:400px;}
+.overlay button {position:absolute;top:20px;right:20px;background:red;}
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-    color: #fff;
-  }
-  footer a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; }
+/* Footer */
+footer {text-align:center;padding:2rem;}
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Emotionale Balance | Herzöffnung</h1>
-  <div class="buttons">
-    <a href="https://calendly.com/" target="_blank">Termin buchen</a>
-    <a href="#cards">Zu den Themen</a>
-    <a href="https://amzn.eu/d/4ZCwSxf" target="_blank">Buch kaufen</a>
+  <div>Emotionale Balance</div>
+  <div>
+    <a href="#">Termin buchen</a>
+    <a href="#themen">Übungen</a>
   </div>
 </header>
 
-<main>
-  <!-- Intro / Philosophie -->
-  <section class="intro">
-    <img src="https://via.placeholder.com/150" alt="Behn">
-    <div class="text">
-      <h2>LiaVia</h2>
-      <p>Gelernte Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Ich begleite Menschen mit chronischen Schmerzen, emotionalen Blockaden und Beziehungsmustern.</p>
-      <p>Philosophie: Emotionale Stabilität, Herzöffnung und Selbstheilung durch sanfte Übungen, Meditation, Naturerfahrungen und Achtsamkeit.</p>
-    </div>
-  </section>
+<section class="hero">
+  <h1>Emotionale Balance & Herzöffnung</h1>
+  <p>Für Menschen mit Stress, Schmerzen und emotionalen Blockaden</p>
+  <a href="#">Termin buchen</a>
+  <a href="#themen">Übungen starten</a>
+</section>
 
-  <!-- Themenkarten -->
-  <section id="cards">
-    <div class="card" onclick="toggleSubcard('sub1')">
-      <h2>Chronische Schmerzen & Körperstress</h2>
-      <p>Was ist chronischer Schmerz und wie wirkt er auf Körper und Psyche?</p>
-      <div id="sub1" class="subcard">
-        <p>Atemübungen, Meditation, leichte Bewegungen.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/videoseries?list=PLVFghMxXNOFooPbDk7kyMYF3qxsrwtG9f')">Video ansehen</button>
-      </div>
-    </div>
+<section class="section intro">
+  <img src="https://via.placeholder.com/150">
+  <div>
+    <h2>LiaVia</h2>
+    <p>Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Begleitung bei chronischen Schmerzen und emotionalen Blockaden.</p>
+  </div>
+</section>
 
-    <div class="card" onclick="toggleSubcard('sub2')">
-      <h2>Bindungstrauma & Beziehungsmuster</h2>
-      <p>Emotionale Blockaden erkennen, Wiederholungen in schwierigen Beziehungen vermeiden.</p>
-      <div id="sub2" class="subcard">
-        <p>Atemübungen, Meditation, Reflexion der Beziehungsmuster.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/x3q_J-DSKZY')">Video ansehen</button>
-      </div>
-    </div>
+<section class="section">
+  <div class="card">
+    <h3>Philosophie</h3>
+    <p>Emotionale Stabilität entsteht durch Verbindung von Körper, Atem und Bewusstsein.</p>
+  </div>
+</section>
 
-    <div class="card" onclick="toggleSubcard('sub3')">
-      <h2>Nervensystemstress & emotionale Erschöpfung</h2>
-      <p>Stressreduktion, Entspannung, Naturerfahrungen und Herzöffnung.</p>
-      <div id="sub3" class="subcard">
-        <p>Meditation, kurze Naturübungen, sanfte Bewegung.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/qRNZAuY82E0')">Video ansehen</button>
-      </div>
-    </div>
+<section class="section cards" id="themen">
 
-    <div class="card" onclick="toggleSubcard('sub4')">
-      <h2>Verlustangst & Selbstwert</h2>
-      <p>Stärkung des Selbstwerts und Umgang mit Verlustangst.</p>
-      <div id="sub4" class="subcard">
-        <p>Atemübungen, Meditation, Reflexion.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/CeM4iIJ_Yhg')">Video ansehen</button>
-      </div>
+  <div class="card" onclick="toggle('c1')">
+    <h3>Chronische Schmerzen</h3>
+    <p>Körperstress verstehen</p>
+    <div id="c1" class="subcard">
+      <p>Atemübungen & Bewegung</p>
+      <button onclick="play(event,'https://www.youtube.com/embed/T65M1VxJlT0')">Video</button>
     </div>
+  </div>
 
-    <div class="card" onclick="toggleSubcard('sub5')">
-      <h2>Paartherapie & Liebeskummer</h2>
-      <p>Herzöffnung, emotionale Stabilität aufbauen, kurze Animationen und Reels.</p>
-      <div id="sub5" class="subcard">
-        <p>Kurze Übungen, Reflexion und sanfte Bewegung.</p>
-        <button onclick="openVideo('https://www.youtube.com/embed/abcd1234')">Video ansehen</button>
-      </div>
+  <div class="card" onclick="toggle('c2')">
+    <h3>Bindungstrauma</h3>
+    <div id="c2" class="subcard">
+      <p>Beziehungsmuster erkennen</p>
+      <button onclick="play(event,'https://www.youtube.com/embed/IdUrixeWbis')">Video</button>
     </div>
-  </section>
-</main>
+  </div>
 
-<!-- Video Overlay -->
-<div class="video-overlay" id="videoOverlay">
-  <button id="closeVideo">Schließen</button>
-  <iframe src="" frameborder="0" allowfullscreen></iframe>
+  <div class="card" onclick="toggle('c3')">
+    <h3>Nervensystemstress</h3>
+    <div id="c3" class="subcard">
+      <p>Meditation & Regulation</p>
+      <button onclick="play(event,'https://www.youtube.com/embed/A7570Q8JrE0')">Video</button>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="card">
+    <h3>Buch</h3>
+    <p>Fibromyalgie & Selbstheilung</p>
+    <a href="https://amzn.eu/d/4ZCwSxf" target="_blank">Zum Buch</a>
+  </div>
+</section>
+
+<section class="section" style="text-align:center;">
+  <h2>Jetzt Termin buchen</h2>
+  <a href="#">Zoom / Calendly</a>
+</section>
+
+<div class="overlay" id="overlay">
+  <button onclick="closeVideo()">X</button>
+  <iframe src=""></iframe>
 </div>
 
 <footer>
-  <p>Folge uns auf:
-    <a href="https://instagram.com/dorje.wulf" target="_blank">Instagram</a> |
-    <a href="https://www.tiktok.com/@dorje.wulf" target="_blank">TikTok</a> |
-    <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+  <p>
+    <a href="#">Instagram</a> |
+    <a href="#">TikTok</a> |
+    <a href="#">YouTube</a>
   </p>
-  <p>© 2026 LiaVia</p>
 </footer>
 
 <script>
-  function toggleSubcard(id) {
-    const sub = document.getElementById(id);
-    sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
-  }
-  function openVideo(url) {
-    const overlay = document.getElementById('videoOverlay');
-    const iframe = overlay.querySelector('iframe');
-    iframe.src = url;
-    overlay.style.display = 'flex';
-  }
-  document.getElementById('closeVideo').addEventListener('click', () => {
-    const overlay = document.getElementById('videoOverlay');
-    const iframe = overlay.querySelector('iframe');
-    iframe.src = '';
-    overlay.style.display = 'none';
-  });
+function toggle(id){
+  let el=document.getElementById(id);
+  el.style.display=el.style.display==="block"?"none":"block";
+}
+function play(e,url){
+  e.stopPropagation();
+  document.getElementById('overlay').style.display='flex';
+  document.querySelector('iframe').src=url;
+}
+function closeVideo(){
+  document.getElementById('overlay').style.display='none';
+  document.querySelector('iframe').src='';
+}
 </script>
 
 </body>
