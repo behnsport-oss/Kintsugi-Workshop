@@ -12,6 +12,7 @@ body {
   background: linear-gradient(180deg,#0a9396,#94d2bd);
   color:#03303E;
 }
+
 /* HEADER */
 header {
   display:flex;
@@ -66,7 +67,7 @@ header .buttons a:hover{
 .card p {
   margin:0.5rem 0;
 }
-.card button{
+.card button, .card a.btn{
   margin-top:10px;
   padding:0.5rem 1rem;
   border:none;
@@ -75,6 +76,8 @@ header .buttons a:hover{
   color:#03303E;
   font-weight:600;
   cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
 }
 
 /* PROFILE */
@@ -194,9 +197,10 @@ footer a{
     <button onclick="openPopup('p5')">Mehr erfahren</button>
   </div>
 
+  <!-- BUCH BOX -->
   <div class="card">
     <h3>Buch: Kintsugi Kriegerin</h3>
-    <p>Mein Erfahrungsbericht und Praxisleitfaden für chronische Schmerzen und emotionale Balance</p>
+    <p>Mein Erfahrungsbericht & Praxisleitfaden für chronische Schmerzen und emotionale Balance</p>
     <a class="btn" href="https://www.amazon.de" target="_blank">Jetzt kaufen</a>
   </div>
 </section>
@@ -206,7 +210,6 @@ footer a{
   <div class="popup-content">
     <span class="close" onclick="closePopup('p1')">X</span>
     <h2>Chronische Schmerzen</h2>
-    <p>Lösungen:</p>
     <ul>
       <li>Atemübungen</li>
       <li>Meditation</li>
@@ -222,7 +225,6 @@ footer a{
   <div class="popup-content">
     <span class="close" onclick="closePopup('p2')">X</span>
     <h2>Bindungstrauma & Beziehungsmuster</h2>
-    <p>Lösungen:</p>
     <ul>
       <li>Emotionale Regulation</li>
       <li>Atemübungen</li>
@@ -236,7 +238,6 @@ footer a{
   <div class="popup-content">
     <span class="close" onclick="closePopup('p3')">X</span>
     <h2>Nervensystemstress & emotionale Erschöpfung</h2>
-    <p>Lösungen:</p>
     <ul>
       <li>Meditation</li>
       <li>Wandern / Naturerfahrung</li>
@@ -250,7 +251,6 @@ footer a{
   <div class="popup-content">
     <span class="close" onclick="closePopup('p4')">X</span>
     <h2>Verlustangst & Selbstwert</h2>
-    <p>Lösungen:</p>
     <ul>
       <li>Selbstwertübungen</li>
       <li>Stabilisierung</li>
@@ -264,7 +264,6 @@ footer a{
   <div class="popup-content">
     <span class="close" onclick="closePopup('p5')">X</span>
     <h2>Emotionale Blockaden / Liebeskummer</h2>
-    <p>Lösungen:</p>
     <ul>
       <li>Herzöffnung</li>
       <li>Emotionale Stabilität aufbauen</li>
@@ -283,12 +282,8 @@ footer a{
 </footer>
 
 <script>
-function openPopup(id){
-  document.getElementById(id).style.display='flex';
-}
-function closePopup(id){
-  document.getElementById(id).style.display='none';
-}
+function openPopup(id){document.getElementById(id).style.display='flex';}
+function closePopup(id){document.getElementById(id).style.display='none';}
 </script>
 
 </body>
