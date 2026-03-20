@@ -23,7 +23,7 @@ header {
   background:rgba(255,255,255,0.2);
   backdrop-filter:blur(10px);
 }
-header h1 { color:white; font-size:2rem; }
+header h1 { color:white; font-size:2.2rem; }
 
 /* BUTTON */
 .btn {
@@ -93,6 +93,7 @@ header h1 { color:white; font-size:2rem; }
   background:rgba(0,0,0,0.8);
   justify-content:center;
   align-items:center;
+  z-index:1000;
 }
 .popup-content {
   background:white;
@@ -103,6 +104,7 @@ header h1 { color:white; font-size:2rem; }
 .close {
   float:right;
   cursor:pointer;
+  font-weight:bold;
 }
 
 /* VIDEO */
@@ -130,7 +132,7 @@ footer a {
 <body>
 
 <header>
-  <h1>Emotionale Balance</h1>
+  <h1>Emotionale Balance & Herzöffnung</h1>
   <div>
     <a class="btn" href="#">Calendly</a>
     <a class="btn" href="#">Zoom</a>
@@ -144,7 +146,7 @@ footer a {
 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
 <div>
 <h3>LiaVia</h3>
-<p>Gesundheitsberaterin & Yoga-Lehrerin. Arbeit mit chronischen Schmerzen und emotionaler Stabilität.</p>
+<p>Gesundheitsberaterin & Yoga-Lehrerin. Fokus auf chronische Schmerzen, emotionale Stabilität und Körperarbeit.</p>
 </div>
 </div>
 
@@ -152,7 +154,7 @@ footer a {
 <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c">
 <div>
 <h3>Psychologin</h3>
-<p>Bindungstrauma, Verlustangst, emotionale Blockaden und mentale Stabilität.</p>
+<p>Expertin für Bindungstrauma, Verlustangst und emotionale Regulation.</p>
 </div>
 </div>
 
@@ -163,16 +165,32 @@ footer a {
 
 <div class="card">
 <h3>Chronische Schmerzen</h3>
-<p>Körperstress & Erschöpfung</p>
-<button class="btn" onclick="openPopup('problem1')">Problem verstehen</button>
-<button class="btn" onclick="openPopup('solution1')">Lösung sehen</button>
+<button class="btn" onclick="openPopup('p1')">Problem</button>
+<button class="btn" onclick="openPopup('m1')">Lösungen</button>
 </div>
 
 <div class="card">
 <h3>Bindungstrauma</h3>
-<p>Verlustangst & Muster</p>
-<button class="btn" onclick="openPopup('problem2')">Problem verstehen</button>
-<button class="btn" onclick="openPopup('solution2')">Lösung sehen</button>
+<button class="btn" onclick="openPopup('p2')">Problem</button>
+<button class="btn" onclick="openPopup('m2')">Lösungen</button>
+</div>
+
+<div class="card">
+<h3>Nervensystemstress</h3>
+<button class="btn" onclick="openPopup('p3')">Problem</button>
+<button class="btn" onclick="openPopup('m3')">Lösungen</button>
+</div>
+
+<div class="card">
+<h3>Selbstwert</h3>
+<button class="btn" onclick="openPopup('p4')">Problem</button>
+<button class="btn" onclick="openPopup('m4')">Lösungen</button>
+</div>
+
+<div class="card">
+<h3>Emotionale Blockaden</h3>
+<button class="btn" onclick="openPopup('p5')">Problem</button>
+<button class="btn" onclick="openPopup('m5')">Lösungen</button>
 </div>
 
 </section>
@@ -180,44 +198,34 @@ footer a {
 <!-- BUCH -->
 <div class="book">
 <h2>Kintsugi Kriegerin</h2>
-<p>Dein Weg aus Schmerz & emotionaler Blockade</p>
+<p>Heilung von innen – dein Weg zu emotionaler Stabilität</p>
 <a class="btn" href="https://amazon.de" target="_blank">Zum Buch</a>
 </div>
 
-<!-- POPUPS -->
+<!-- POPUPS PROBLEM -->
+<div id="p1" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p1')">X</span><h2>Chronische Schmerzen</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
 
-<!-- PROBLEM -->
-<div id="problem1" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('problem1')">X</span>
-<h2>Chronische Schmerzen erklärt</h2>
-<iframe src="https://www.youtube.com/embed/ZToicYcHIOU"></iframe>
-</div>
-</div>
+<div id="p2" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p2')">X</span><h2>Bindungstrauma</h2><iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe></div></div>
 
-<div id="solution1" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('solution1')">X</span>
-<h2>Lösungen: Atem & Bewegung</h2>
-<iframe src="https://www.youtube.com/embed/4pLUleLdwY4"></iframe>
-</div>
-</div>
+<div id="p3" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p3')">X</span><h2>Nervensystemstress</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
 
-<div id="problem2" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('problem2')">X</span>
-<h2>Bindungstrauma erklärt</h2>
-<iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe>
-</div>
-</div>
+<div id="p4" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p4')">X</span><h2>Selbstwert</h2><iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe></div></div>
 
-<div id="solution2" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('solution2')">X</span>
-<h2>Emotionale Stabilität</h2>
-<iframe src="https://www.youtube.com/embed/inpok4MKVLM"></iframe>
-</div>
-</div>
+<div id="p5" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p5')">X</span><h2>Emotionale Blockaden</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
+
+<!-- MENÜ LÖSUNGEN -->
+<div id="m1" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('m1')">X</span>
+<button class="btn" onclick="openPopup('breath')">Atem</button>
+<button class="btn" onclick="openPopup('taichi')">Tai Chi</button>
+<button class="btn" onclick="openPopup('dance')">Tanzen</button>
+</div></div>
+
+<!-- EINZELNE LÖSUNGEN -->
+<div id="breath" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('breath')">X</span><h2>Atemübungen</h2><iframe src="https://www.youtube.com/embed/inpok4MKVLM"></iframe></div></div>
+
+<div id="taichi" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('taichi')">X</span><h2>Tai Chi</h2><iframe src="https://www.youtube.com/embed/cEOS2zoyQw4"></iframe></div></div>
+
+<div id="dance" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('dance')">X</span><h2>Freies Tanzen</h2><iframe src="https://www.youtube.com/embed/3dclxJ6dC0c"></iframe></div></div>
 
 <!-- FOOTER -->
 <footer>
@@ -228,12 +236,8 @@ footer a {
 </footer>
 
 <script>
-function openPopup(id){
-document.getElementById(id).style.display='flex';
-}
-function closePopup(id){
-document.getElementById(id).style.display='none';
-}
+function openPopup(id){document.getElementById(id).style.display='flex';}
+function closePopup(id){document.getElementById(id).style.display='none';}
 </script>
 
 </body>
