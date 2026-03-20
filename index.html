@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emotionale Balance & Herzöffnung</title>
+<title>Emotionale Balance</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -18,33 +19,50 @@ body {
 header {
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:1rem 2rem;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-  position:sticky;
-  top:0;
-  z-index:100;
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);
 }
-header h1 {
-  color:white;
-  font-size:2.2rem;
-  font-weight:600;
-}
-header .buttons a {
-  margin-left:1rem;
-  text-decoration:none;
-  padding:0.5rem 1rem;
+header h1 { color:white; font-size:2rem; }
+
+/* BUTTON */
+.btn {
+  background:linear-gradient(90deg,#83c5be,#ade8f4);
+  color:#03303E;
+  padding:10px 18px;
   border-radius:10px;
-  background: linear-gradient(90deg,#94d2bd,#0a9396);
-  color:white;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:10px;
   font-weight:600;
+  cursor:pointer;
 }
 
-/* GRID / SECTIONS */
+/* PROFILE */
+.profile {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:2rem;
+}
+.profile-box {
+  display:flex;
+  gap:20px;
+  background:white;
+  border-radius:15px;
+  padding:20px;
+}
+.profile-box img {
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* GRID */
 .grid {
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
   gap:20px;
   padding:2rem;
 }
@@ -55,44 +73,26 @@ header .buttons a {
   border-radius:15px;
   padding:20px;
   box-shadow:0 10px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-.card:hover {
-  transform: translateY(-5px);
 }
 
-/* PROFILE */
-.profile {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+/* BOOK */
+.book {
+  margin:2rem;
   padding:2rem;
-}
-.profile-card {
-  display:flex;
-  background:white;
+  background:linear-gradient(135deg,#bde0fe,#caf0f8);
   border-radius:15px;
-  padding:20px;
-  gap:20px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
-.profile-card img {
-  width:150px;
-  border-radius:50%;
-  object-fit:cover;
 }
 
-/* POPUP / OVERLAY */
+/* POPUP */
 .popup {
   display:none;
   position:fixed;
   top:0; left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.8);
   justify-content:center;
   align-items:center;
-  z-index:2000;
 }
 .popup-content {
   background:white;
@@ -103,33 +103,26 @@ header .buttons a {
 .close {
   float:right;
   cursor:pointer;
-  font-weight:bold;
 }
 
-/* BUTTON */
-.btn {
-  background: linear-gradient(90deg,#94d2bd,#0a9396);
-  color:white;
-  padding:10px 20px;
+/* VIDEO */
+iframe {
+  width:100%;
+  height:300px;
   border-radius:10px;
-  text-decoration:none;
-  display:inline-block;
   margin-top:10px;
-  font-weight:600;
-  cursor:pointer;
 }
 
 /* FOOTER */
 footer {
   text-align:center;
-  padding:2rem 1rem;
+  padding:2rem;
   color:white;
 }
 footer a {
+  margin:0 10px;
   color:white;
-  margin:0 0.5rem;
   font-weight:bold;
-  text-decoration:none;
 }
 </style>
 </head>
@@ -137,225 +130,111 @@ footer a {
 <body>
 
 <header>
-  <h1>Emotionale Balance & Herzöffnung</h1>
-  <div class="buttons">
-    <a href="#">Calendly</a>
-    <a href="#">Zoom</a>
+  <h1>Emotionale Balance</h1>
+  <div>
+    <a class="btn" href="#">Calendly</a>
+    <a class="btn" href="#">Zoom</a>
   </div>
 </header>
 
-<!-- PROFILE SECTION -->
+<!-- PROFILE -->
 <section class="profile">
-  <div class="profile-card">
-    <img src="https://via.placeholder.com/150" alt="LiaVia">
-    <div>
-      <h3>LiaVia</h3>
-      <p>Gesundheitsberaterin & Yoga-Lehrerin seit 20 Jahren. Begleitung von Menschen mit chronischen Schmerzen, emotionalen Blockaden und Beziehungsmustern.</p>
-      <p>Philosophie: Herzöffnung, Selbstheilung, emotionale Stabilität durch Atemübungen, Meditation, Tai Chi, freies Tanzen und Naturerfahrungen.</p>
-    </div>
-  </div>
 
-  <div class="profile-card">
-    <img src="https://via.placeholder.com/150" alt="Psychologin">
-    <div>
-      <h3>Psychologin</h3>
-      <p>Expertin für Traumaarbeit, Bindungsmuster & emotionale Regulation.</p>
-      <p>Fokus auf chronische Schmerzen, Nervensystemstress und emotionale Erschöpfung.</p>
-    </div>
-  </div>
+<div class="profile-box">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
+<div>
+<h3>LiaVia</h3>
+<p>Gesundheitsberaterin & Yoga-Lehrerin. Arbeit mit chronischen Schmerzen und emotionaler Stabilität.</p>
+</div>
+</div>
+
+<div class="profile-box">
+<img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c">
+<div>
+<h3>Psychologin</h3>
+<p>Bindungstrauma, Verlustangst, emotionale Blockaden und mentale Stabilität.</p>
+</div>
+</div>
+
 </section>
 
-<!-- THEMEN / HAUPTPROBLEME -->
+<!-- THEMEN -->
 <section class="grid">
 
 <div class="card">
-<h3>Chronische Schmerzen & Körperstress</h3>
-<p>Kurze Einführung in das Thema.</p>
-<button class="btn" onclick="openPopup('p1')">Mehr erfahren</button>
+<h3>Chronische Schmerzen</h3>
+<p>Körperstress & Erschöpfung</p>
+<button class="btn" onclick="openPopup('problem1')">Problem verstehen</button>
+<button class="btn" onclick="openPopup('solution1')">Lösung sehen</button>
 </div>
 
 <div class="card">
-<h3>Bindungstrauma & Beziehungsmuster</h3>
-<p>Emotionale Blockaden erkennen</p>
-<button class="btn" onclick="openPopup('p2')">Mehr erfahren</button>
-</div>
-
-<div class="card">
-<h3>Nervensystemstress & emotionale Erschöpfung</h3>
-<p>Stressabbau, Stabilisierung</p>
-<button class="btn" onclick="openPopup('p3')">Mehr erfahren</button>
-</div>
-
-<div class="card">
-<h3>Verlustangst & Selbstwert</h3>
-<p>Selbstwert stärken, emotionale Stabilität</p>
-<button class="btn" onclick="openPopup('p4')">Mehr erfahren</button>
-</div>
-
-<div class="card">
-<h3>Emotionale Blockaden / Paartherapie / Liebeskummer</h3>
-<p>Herzöffnung und emotionale Regulation</p>
-<button class="btn" onclick="openPopup('p5')">Mehr erfahren</button>
-</div>
-
-<div class="card">
-<h3>Buch: Kintsugi Kriegerin</h3>
-<p>Praktische Tipps & Übungen für chronische Schmerzen und emotionale Stabilität</p>
-<button class="btn" onclick="openPopup('book')">Zum Amazon-Link</button>
+<h3>Bindungstrauma</h3>
+<p>Verlustangst & Muster</p>
+<button class="btn" onclick="openPopup('problem2')">Problem verstehen</button>
+<button class="btn" onclick="openPopup('solution2')">Lösung sehen</button>
 </div>
 
 </section>
 
-<!-- WORKSHOPS -->
-<section class="grid">
-<div class="card">
-<h3>Workshop: Emotionale Stabilität – Tag 1</h3>
-<p>Thema: Atemübungen, Meditation & Körperarbeit</p>
-<p>Datum: 25. März 2026 | 10:00–14:00</p>
-<button class="btn" onclick="openPopup('w1')">Mehr erfahren / Zoom-Link</button>
+<!-- BUCH -->
+<div class="book">
+<h2>Kintsugi Kriegerin</h2>
+<p>Dein Weg aus Schmerz & emotionaler Blockade</p>
+<a class="btn" href="https://amazon.de" target="_blank">Zum Buch</a>
 </div>
-
-<div class="card">
-<h3>Workshop: Herzöffnung & Bindungsmuster – Tag 2</h3>
-<p>Thema: Beziehungsmuster erkennen, Selbstwert stärken</p>
-<p>Datum: 26. März 2026 | 10:00–14:00</p>
-<button class="btn" onclick="openPopup('w2')">Mehr erfahren / Zoom-Link</button>
-</div>
-</section>
 
 <!-- POPUPS -->
 
-<!-- Chronische Schmerzen -->
-<div id="p1" class="popup">
+<!-- PROBLEM -->
+<div id="problem1" class="popup">
 <div class="popup-content">
-<span class="close" onclick="closePopup('p1')">X</span>
-<h2>Chronische Schmerzen & Körperstress</h2>
-<p>Lösungen:</p>
-<ul>
-<li>Atemübungen</li>
-<li>Meditation</li>
-<li>Tai Chi</li>
-<li>Freies Tanzen</li>
-</ul>
-<a class="btn" href="https://youtube.com" target="_blank">Video / Short</a>
+<span class="close" onclick="closePopup('problem1')">X</span>
+<h2>Chronische Schmerzen erklärt</h2>
+<iframe src="https://www.youtube.com/embed/ZToicYcHIOU"></iframe>
 </div>
 </div>
 
-<!-- Bindungstrauma -->
-<div id="p2" class="popup">
+<div id="solution1" class="popup">
 <div class="popup-content">
-<span class="close" onclick="closePopup('p2')">X</span>
-<h2>Bindungstrauma & Beziehungsmuster</h2>
-<p>Lösungen:</p>
-<ul>
-<li>Emotionale Regulation</li>
-<li>Atemübungen</li>
-<li>Cartoon / Short Animation</li>
-</ul>
-<a class="btn" href="https://youtube.com" target="_blank">Video / Short</a>
+<span class="close" onclick="closePopup('solution1')">X</span>
+<h2>Lösungen: Atem & Bewegung</h2>
+<iframe src="https://www.youtube.com/embed/4pLUleLdwY4"></iframe>
 </div>
 </div>
 
-<!-- Nervensystemstress -->
-<div id="p3" class="popup">
+<div id="problem2" class="popup">
 <div class="popup-content">
-<span class="close" onclick="closePopup('p3')">X</span>
-<h2>Nervensystemstress & emotionale Erschöpfung</h2>
-<p>Lösungen:</p>
-<ul>
-<li>Meditation</li>
-<li>Naturerfahrung & Wandern</li>
-<li>Freies Tanzen</li>
-</ul>
-<a class="btn" href="https://youtube.com" target="_blank">Video / Short</a>
+<span class="close" onclick="closePopup('problem2')">X</span>
+<h2>Bindungstrauma erklärt</h2>
+<iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe>
 </div>
 </div>
 
-<!-- Verlustangst -->
-<div id="p4" class="popup">
+<div id="solution2" class="popup">
 <div class="popup-content">
-<span class="close" onclick="closePopup('p4')">X</span>
-<h2>Verlustangst & Selbstwert</h2>
-<p>Lösungen:</p>
-<ul>
-<li>Selbstwertübungen</li>
-<li>Stabilisierung</li>
-<li>Breathwork / Meditation</li>
-</ul>
-<a class="btn" href="https://youtube.com" target="_blank">Video / Short</a>
+<span class="close" onclick="closePopup('solution2')">X</span>
+<h2>Emotionale Stabilität</h2>
+<iframe src="https://www.youtube.com/embed/inpok4MKVLM"></iframe>
 </div>
 </div>
-
-<!-- Emotionale Blockaden -->
-<div id="p5" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('p5')">X</span>
-<h2>Emotionale Blockaden / Paartherapie / Liebeskummer</h2>
-<p>Lösungen:</p>
-<ul>
-<li>Herzöffnung</li>
-<li>Emotionale Stabilität aufbauen</li>
-<li>Kurze Animation / Reel</li>
-</ul>
-<a class="btn" href="https://youtube.com" target="_blank">Video / Short</a>
-</div>
-</div>
-
-<!-- Buch -->
-<div id="book" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('book')">X</span>
-<h2>Kintsugi Kriegerin</h2>
-<p>Praktische Tipps & Übungen für chronische Schmerzen und emotionale Stabilität.</p>
-<a class="btn" href="https://www.amazon.de" target="_blank">Zum Buch auf Amazon</a>
-</div>
-</div>
-
-<!-- WORKSHOPS -->
-<div id="w1" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('w1')">X</span>
-<h2>Workshop: Emotionale Stabilität – Tag 1</h2>
-<ul>
-<li>Atemübungen</li>
-<li>Meditation</li>
-<li>Sanfte Bewegung / Tai Chi / Freies Tanzen</li>
-</ul>
-<a class="btn" href="DEIN_ZOOM_LINK" target="_blank">Zoom-Link</a>
-</div>
-</div>
-
-<div id="w2" class="popup">
-<div class="popup-content">
-<span class="close" onclick="closePopup('w2')">X</span>
-<h2>Workshop: Herzöffnung & Bindungsmuster – Tag 2</h2>
-<ul>
-<li>Bindungsmuster erkennen</li>
-<li>Selbstwert stärken</li>
-<li>Kurzvideo / Animation / Reel</li>
-</ul>
-<a class="btn" href="DEIN_ZOOM_LINK" target="_blank">Zoom-Link</a>
-</div>
-</div>
-
-<!-- SCRIPT -->
-<script>
-function openPopup(id){
- document.getElementById(id).style.display='flex';
-}
-function closePopup(id){
- document.getElementById(id).style.display='none';
-}
-</script>
 
 <!-- FOOTER -->
 <footer>
 <p>Folge uns:</p>
-<a href="https://instagram.com/dorje.wulf" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@dorje.wulf" target="_blank">TikTok</a>
-<a href="https://youtube.com" target="_blank">YouTube</a>
-<p>© 2026 Emotionale Balance</p>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">YouTube</a>
 </footer>
+
+<script>
+function openPopup(id){
+document.getElementById(id).style.display='flex';
+}
+function closePopup(id){
+document.getElementById(id).style.display='none';
+}
+</script>
 
 </body>
 </html>
