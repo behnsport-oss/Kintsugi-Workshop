@@ -3,229 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LiaVia | Emotionale Balance</title>
+<title>Emotionale Balance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(to bottom,#005f73,#0a9396);
-  color:#fff;
+  font-family:'Inter', sans-serif;
+  background: linear-gradient(180deg,#0a9396,#94d2bd);
+  color:#03303E;
 }
-
-.section {
-  max-width:1100px;
-  margin:auto;
-  padding:2rem;
-}
-
-h1,h2 {text-align:center;}
 
 /* HEADER */
 header {
   display:flex;
   justify-content:space-between;
   padding:1rem 2rem;
-  background:rgba(0,0,0,0.2);
-  position:sticky;
-  top:0;
+  background:rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+header h1 {
+  color:white;
+  font-size:2rem;
 }
 
-header a {
-  background:#94d2bd;
-  padding:0.5rem 1rem;
-  border-radius:8px;
-  color:#003845;
-}
-
-/* HERO */
-.hero {
-  text-align:center;
-  padding:4rem 2rem;
-}
-
-.hero a {
-  display:inline-block;
-  margin:10px;
-  padding:1rem 2rem;
-  background:#ee9b00;
+/* BUTTON */
+.btn {
+  background:#0a9396;
+  color:white;
+  padding:10px 20px;
   border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:10px;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:2rem;
+}
+
+/* CARD */
+.card {
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* PROFILE */
 .profile {
   display:flex;
-  gap:2rem;
-  background:rgba(255,255,255,0.15);
-  padding:1.5rem;
-  border-radius:15px;
-  margin-bottom:2rem;
-  align-items:center;
+  gap:20px;
+  padding:2rem;
 }
 .profile img {
-  width:140px;
-  height:140px;
+  width:120px;
   border-radius:50%;
 }
 
-/* CARDS */
-.card {
-  background:linear-gradient(#caf0f8,#ade8f4);
-  color:#003845;
-  padding:1.5rem;
-  border-radius:15px;
-  margin-bottom:1rem;
-}
-
-.subcard, .subcard2 {
-  display:none;
-  margin-top:1rem;
-  background:#fff;
-  color:#003845;
-  padding:1rem;
-  border-radius:10px;
-}
-
-button {
-  margin-top:10px;
-  padding:0.5rem 1rem;
-  background:#005f73;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-}
-
-/* VIDEO */
-.overlay {
+/* POPUP */
+.popup {
   display:none;
   position:fixed;
   top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.8);
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
   justify-content:center;
   align-items:center;
 }
-.overlay iframe {width:80%;height:400px;}
-.overlay button {position:absolute;top:20px;right:20px;}
-
-/* FOOTER */
-footer {text-align:center;padding:2rem;}
+.popup-content {
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  max-width:500px;
+}
+.close {
+  float:right;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div>LiaVia</div>
+  <h1>Emotionale Balance</h1>
   <div>
-    <a href="#">Termin buchen</a>
+    <a class="btn" href="#">Calendly</a>
+    <a class="btn" href="#">Zoom</a>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Emotionale Balance & Herzöffnung</h1>
-  <p>Für Menschen mit Stress, Schmerzen & Beziehungsthemen</p>
-  <a href="#">Termin buchen</a>
-  <a href="#themen">Übungen starten</a>
-</section>
-
-<div class="section">
-
-<h2>Über uns</h2>
-
+<!-- PROFILE -->
 <div class="profile">
-  <img src="https://randomuser.me/api/portraits/women/44.jpg">
-  <div>
+  <div class="card">
+    <img src="https://via.placeholder.com/120">
     <h3>LiaVia</h3>
-    <p>Gesundheitsberaterin & Yoga-Lehrerin. Arbeit mit chronischen Schmerzen, emotionalen Blockaden und Nervensystem-Regulation.</p>
+    <p>Gesundheitsberaterin & Yoga-Lehrerin. Arbeit mit chronischen Schmerzen & emotionaler Stabilität.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/120">
+    <h3>Team</h3>
+    <p>Fokus auf emotionale Blockaden, Beziehungsmuster & mentale Stabilität.</p>
   </div>
 </div>
 
-<div class="profile">
-  <img src="https://randomuser.me/api/portraits/women/68.jpg">
-  <div>
-    <h3>Mitarbeiterin</h3>
-    <p>Fokus auf Beziehungsmuster, Selbstwert und emotionale Stabilisierung.</p>
-  </div>
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Deine Themen</h2>
-
-<div class="card">
-<h3>Bindungstrauma & Beziehungsmuster</h3>
-<p>Wiederkehrende emotionale Dynamiken erkennen.</p>
-<button onclick="toggle('b1')">Mehr erfahren</button>
-
-<div id="b1" class="subcard">
-<p>Verlustangst vs Vermeidung verstehen</p>
-<button onclick="toggle('b1b')">Übung öffnen</button>
-
-<div id="b1b" class="subcard2">
-<p>Atemübung zur emotionalen Stabilisierung</p>
-<button onclick="play(event,'https://www.youtube.com/embed/T65M1VxJlT0')">Video</button>
-</div>
-
-</div>
-</div>
+<!-- PROBLEME -->
+<div class="grid">
 
 <div class="card">
 <h3>Chronische Schmerzen</h3>
-<p>Körperstress reduzieren</p>
-<button onclick="toggle('b2')">Mehr erfahren</button>
+<p>Körperstress & Spannung</p>
+<button onclick="openPopup('p1')" class="btn">Mehr erfahren</button>
+</div>
 
-<div id="b2" class="subcard">
-<p>Sanfte Regulation durch Atem & Bewegung</p>
-<button onclick="toggle('b2b')">Übung öffnen</button>
+<div class="card">
+<h3>Bindungstrauma</h3>
+<p>Beziehungsmuster</p>
+<button onclick="openPopup('p2')" class="btn">Mehr erfahren</button>
+</div>
 
-<div id="b2b" class="subcard2">
-<button onclick="play(event,'https://www.youtube.com/embed/A7570Q8JrE0')">Video</button>
+<div class="card">
+<h3>Nervensystemstress</h3>
+<p>Erschöpfung & Unruhe</p>
+<button onclick="openPopup('p3')" class="btn">Mehr erfahren</button>
+</div>
+
+<div class="card">
+<h3>Selbstwert</h3>
+<p>Verlustangst</p>
+<button onclick="openPopup('p4')" class="btn">Mehr erfahren</button>
+</div>
+
+<div class="card">
+<h3>Emotionale Blockaden</h3>
+<p>Liebeskummer</p>
+<button onclick="openPopup('p5')" class="btn">Mehr erfahren</button>
 </div>
 
 </div>
+
+<!-- POPUPS -->
+
+<div id="p1" class="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup('p1')">X</span>
+<h2>Chronische Schmerzen</h2>
+<p>Lösungen:</p>
+<ul>
+<li>Atemübungen</li>
+<li>Meditation</li>
+<li>Tai Chi</li>
+<li>Freies Tanzen</li>
+</ul>
+<a class="btn" href="https://youtube.com" target="_blank">Video</a>
+</div>
 </div>
 
+<div id="p2" class="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup('p2')">X</span>
+<h2>Bindungstrauma</h2>
+<p>Lösungen:</p>
+<ul>
+<li>emotionale Regulation</li>
+<li>Atemübungen</li>
+<li>Bewusstseinsarbeit</li>
+</ul>
+<a class="btn" href="https://youtube.com" target="_blank">Video</a>
 </div>
-
-<div class="section">
-<h2>Buch</h2>
-<a href="https://amzn.eu/d/4ZCwSxf" target="_blank">Jetzt ansehen</a>
 </div>
-
-<div class="section" style="text-align:center;">
-<h2>Termin buchen</h2>
-<a href="#">Zoom / Calendly</a>
-</div>
-
-<div class="overlay" id="overlay">
-<button onclick="closeVideo()">X</button>
-<iframe src=""></iframe>
-</div>
-
-<footer>
-<p>
-Instagram | TikTok | YouTube
-</p>
-</footer>
 
 <script>
-function toggle(id){
- let el=document.getElementById(id);
- el.style.display=el.style.display==="block"?"none":"block";
+function openPopup(id){
+ document.getElementById(id).style.display='flex';
 }
-
-function play(e,url){
- e.stopPropagation();
- document.getElementById("overlay").style.display="flex";
- document.querySelector("iframe").src=url;
-}
-
-function closeVideo(){
- document.getElementById("overlay").style.display="none";
- document.querySelector("iframe").src="";
+function closePopup(id){
+ document.getElementById(id).style.display='none';
 }
 </script>
 
