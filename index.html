@@ -1,243 +1,686 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emotionale Balance</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotionale Balance</title>
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap)" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-  margin:0;
-  font-family:'Inter', sans-serif;
-  background: linear-gradient(180deg,#0a9396,#94d2bd);
-  color:#03303E;
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #0a9396, #94d2bd);
+      color: #03303E;
+      min-height: 100vh;
+    }
 
-/* HEADER */
-header {
-  display:flex;
-  justify-content:space-between;
-  padding:1rem 2rem;
-  background:rgba(255,255,255,0.2);
-  backdrop-filter:blur(10px);
-}
-header h1 { color:white; font-size:2.2rem; }
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
 
-/* BUTTON */
-.btn {
-  background:linear-gradient(90deg,#83c5be,#ade8f4);
-  color:#03303E;
-  padding:10px 18px;
-  border-radius:10px;
-  text-decoration:none;
-  display:inline-block;
-  margin-top:10px;
-  font-weight:600;
-  cursor:pointer;
-}
+    header h1 {
+      color: white;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin: 0;
+    }
 
-/* PROFILE */
-.profile {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  padding:2rem;
-}
-.profile-box {
-  display:flex;
-  gap:20px;
-  background:white;
-  border-radius:15px;
-  padding:20px;
-}
-.profile-box img {
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  object-fit:cover;
-}
+    .header-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  padding:2rem;
-}
+    /* BUTTONS */
+    .btn {
+      background: linear-gradient(90deg, #83c5be, #ade8f4);
+      color: #03303E;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-/* CARD */
-.card {
-  background:white;
-  border-radius:15px;
-  padding:20px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
+    .btn:hover, .btn:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-/* BOOK */
-.book {
-  margin:2rem;
-  padding:2rem;
-  background:linear-gradient(135deg,#bde0fe,#caf0f8);
-  border-radius:15px;
-}
+    .btn:focus-visible {
+      outline: 3px solid #03303E;
+      outline-offset: 2px;
+    }
 
-/* POPUP */
-.popup {
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-}
-.popup-content {
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  max-width:600px;
-}
-.close {
-  float:right;
-  cursor:pointer;
-  font-weight:bold;
-}
+    /* PROFILE */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-/* VIDEO */
-iframe {
-  width:100%;
-  height:300px;
-  border-radius:10px;
-  margin-top:10px;
-}
+    .profile-box {
+      display: flex;
+      gap: 20px;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      align-items: center;
+    }
 
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:2rem;
-  color:white;
-}
-footer a {
-  margin:0 10px;
-  color:white;
-  font-weight:bold;
-}
-</style>
+    .profile-box img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .profile-box h3 {
+      margin: 0 0 0.5rem 0;
+      color: #0a9396;
+    }
+
+    .profile-box p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 24px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin: 0 0 1rem 0;
+      color: #0a9396;
+    }
+
+    .card-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* BUCH */
+    .book {
+      margin: 2rem auto;
+      padding: 2rem;
+      background: linear-gradient(135deg, #bde0fe, #caf0f8);
+      border-radius: 15px;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .book h2 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .book p {
+      margin: 0 0 1.5rem 0;
+    }
+
+    /* POPUPS */
+    .popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .popup[aria-hidden="false"] {
+      display: flex;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 24px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      animation: popupIn 0.25s ease-out;
+    }
+
+    @keyframes popupIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .popup-content h2 {
+      margin: 0 0 1rem 0;
+      padding-right: 2rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #0a9396;
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #03303E;
+    }
+
+    /* VIDEO CONTAINER */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      margin-top: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* LÖSUNGS-MENÜ */
+    .solution-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+    }
+
+    footer p {
+      margin: 0 0 1rem 0;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .social-links a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 500px) {
+      .profile-box {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Emotionale Balance & Herzöffnung</h1>
-  <div>
-    <a class="btn" href="#">Calendly</a>
-    <a class="btn" href="#">Zoom</a>
+  <h1>Emotionale Balance</h1>
+  <div class="header-buttons">
+    <a class="btn" href="#" aria-label="Termin über Calendly buchen">Calendly</a>
+    <a class="btn" href="#" aria-label="Zoom-Meeting beitreten">Zoom</a>
   </div>
 </header>
 
 <!-- PROFILE -->
-<section class="profile">
+<section class="profile" aria-label="Team-Profile">
+  <article class="profile-box">
+    <img src="[images.unsplash.com](https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop)" 
+         alt="Portrait von LiaVia" 
+         loading="lazy">
+    <div>
+      <h3>LiaVia</h3>
+      <p>Fokus auf chronische Schmerzen, Körperarbeit und emotionale Stabilität.</p>
+    </div>
+  </article>
 
-<div class="profile-box">
-<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
-<div>
-<h3>LiaVia</h3>
-<p>Gesundheitsberaterin & Yoga-Lehrerin. Fokus auf chronische Schmerzen, emotionale Stabilität und Körperarbeit.</p>
-</div>
-</div>
-
-<div class="profile-box">
-<img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c">
-<div>
-<h3>Psychologin</h3>
-<p>Expertin für Bindungstrauma, Verlustangst und emotionale Regulation.</p>
-</div>
-</div>
-
+  <article class="profile-box">
+    <img src="[images.unsplash.com](https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=300&h=300&fit=crop)" 
+         alt="Portrait der Psychologin" 
+         loading="lazy">
+    <div>
+      <h3>Psychologin</h3>
+      <p>Bindungstrauma, Verlustangst und emotionale Regulation.</p>
+    </div>
+  </article>
 </section>
 
 <!-- THEMEN -->
-<section class="grid">
+<section class="grid" aria-label="Themenbereiche">
+  <article class="card">
+    <h3>Chronische Schmerzen</h3>
+    <div class="card-buttons">
+      <button class="btn" data-popup="p1">Problem</button>
+      <button class="btn" data-popup="m1">Lösungen</button>
+    </div>
+  </article>
 
-<div class="card">
-<h3>Chronische Schmerzen</h3>
-<button class="btn" onclick="openPopup('p1')">Problem</button>
-<button class="btn" onclick="openPopup('m1')">Lösungen</button>
-</div>
+  <article class="card">
+    <h3>Bindungstrauma</h3>
+    <div class="card-buttons">
+      <button class="btn" data-popup="p2">Problem</button>
+      <button class="btn" data-popup="m2">Lösungen</button>
+    </div>
+  </article>
 
-<div class="card">
-<h3>Bindungstrauma</h3>
-<button class="btn" onclick="openPopup('p2')">Problem</button>
-<button class="btn" onclick="openPopup('m2')">Lösungen</button>
-</div>
+  <article class="card">
+    <h3>Nervensystemstress</h3>
+    <div class="card-buttons">
+      <button class="btn" data-popup="p3">Problem</button>
+      <button class="btn" data-popup="m3">Lösungen</button>
+    </div>
+  </article>
 
-<div class="card">
-<h3>Nervensystemstress</h3>
-<button class="btn" onclick="openPopup('p3')">Problem</button>
-<button class="btn" onclick="openPopup('m3')">Lösungen</button>
-</div>
+  <article class="card">
+    <h3>Selbstwert</h3>
+    <div class="card-buttons">
+      <button class="btn" data-popup="p4">Problem</button>
+      <button class="btn" data-popup="m4">Lösungen</button>
+    </div>
+  </article>
 
-<div class="card">
-<h3>Selbstwert</h3>
-<button class="btn" onclick="openPopup('p4')">Problem</button>
-<button class="btn" onclick="openPopup('m4')">Lösungen</button>
-</div>
-
-<div class="card">
-<h3>Emotionale Blockaden</h3>
-<button class="btn" onclick="openPopup('p5')">Problem</button>
-<button class="btn" onclick="openPopup('m5')">Lösungen</button>
-</div>
-
+  <article class="card">
+    <h3>Emotionale Blockaden</h3>
+    <div class="card-buttons">
+      <button class="btn" data-popup="p5">Problem</button>
+      <button class="btn" data-popup="m5">Lösungen</button>
+    </div>
+  </article>
 </section>
 
 <!-- BUCH -->
-<div class="book">
-<h2>Kintsugi Kriegerin</h2>
-<p>Heilung von innen – dein Weg zu emotionaler Stabilität</p>
-<a class="btn" href="https://amazon.de" target="_blank">Zum Buch</a>
+<section class="book">
+  <h2>Kintsugi Kriegerin</h2>
+  <p>Heilung von innen – dein Weg zur Stabilität</p>
+  <a class="btn" href="[amazon.de](https://amazon.de)" target="_blank" rel="noopener noreferrer">Zum Buch</a>
+</section>
+
+<!-- PROBLEM POPUPS -->
+<div id="p1" class="popup" role="dialog" aria-hidden="true" aria-labelledby="p1-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="p1-title">Chronische Schmerzen</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/2OEL4P1Rz04)" 
+              title="Video über chronische Schmerzen" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
 </div>
 
-<!-- POPUPS PROBLEM -->
-<div id="p1" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p1')">X</span><h2>Chronische Schmerzen</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
+<div id="p2" class="popup" role="dialog" aria-hidden="true" aria-labelledby="p2-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="p2-title">Bindungstrauma</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/6kUoTS3Yo4g)" 
+              title="Video über Bindungstrauma" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-<div id="p2" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p2')">X</span><h2>Bindungstrauma</h2><iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe></div></div>
+<div id="p3" class="popup" role="dialog" aria-hidden="true" aria-labelledby="p3-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="p3-title">Nervensystemstress</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/2OEL4P1Rz04)" 
+              title="Video über Nervensystemstress" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-<div id="p3" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p3')">X</span><h2>Nervensystemstress</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
+<div id="p4" class="popup" role="dialog" aria-hidden="true" aria-labelledby="p4-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="p4-title">Selbstwert</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/6kUoTS3Yo4g)" 
+              title="Video über Selbstwert" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-<div id="p4" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p4')">X</span><h2>Selbstwert</h2><iframe src="https://www.youtube.com/embed/6kUoTS3Yo4g"></iframe></div></div>
+<div id="p5" class="popup" role="dialog" aria-hidden="true" aria-labelledby="p5-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="p5-title">Emotionale Blockaden</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/2OEL4P1Rz04)" 
+              title="Video über emotionale Blockaden" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-<div id="p5" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('p5')">X</span><h2>Emotionale Blockaden</h2><iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe></div></div>
+<!-- LÖSUNGS-MENÜS -->
+<div id="m1" class="popup" role="dialog" aria-hidden="true" aria-labelledby="m1-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="m1-title">Lösungen: Chronische Schmerzen</h2>
+    <div class="solution-menu">
+      <button class="btn" data-popup="breath">Atem</button>
+      <button class="btn" data-popup="taichi">Tai Chi</button>
+      <button class="btn" data-popup="dance">Tanzen</button>
+      <button class="btn" data-popup="meditation">Meditation</button>
+    </div>
+  </div>
+</div>
 
-<!-- MENÜ LÖSUNGEN -->
-<div id="m1" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('m1')">X</span>
-<button class="btn" onclick="openPopup('breath')">Atem</button>
-<button class="btn" onclick="openPopup('taichi')">Tai Chi</button>
-<button class="btn" onclick="openPopup('dance')">Tanzen</button>
-</div></div>
+<div id="m2" class="popup" role="dialog" aria-hidden="true" aria-labelledby="m2-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="m2-title">Lösungen: Bindungstrauma</h2>
+    <div class="solution-menu">
+      <button class="btn" data-popup="breath">Atem</button>
+      <button class="btn" data-popup="meditation">Meditation</button>
+      <button class="btn" data-popup="journal">Journaling</button>
+    </div>
+  </div>
+</div>
 
-<!-- EINZELNE LÖSUNGEN -->
-<div id="breath" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('breath')">X</span><h2>Atemübungen</h2><iframe src="https://www.youtube.com/embed/inpok4MKVLM"></iframe></div></div>
+<div id="m3" class="popup" role="dialog" aria-hidden="true" aria-labelledby="m3-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="m3-title">Lösungen: Nervensystemstress</h2>
+    <div class="solution-menu">
+      <button class="btn" data-popup="breath">Atem</button>
+      <button class="btn" data-popup="taichi">Tai Chi</button>
+      <button class="btn" data-popup="yoga">Yoga</button>
+    </div>
+  </div>
+</div>
 
-<div id="taichi" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('taichi')">X</span><h2>Tai Chi</h2><iframe src="https://www.youtube.com/embed/cEOS2zoyQw4"></iframe></div></div>
+<div id="m4" class="popup" role="dialog" aria-hidden="true" aria-labelledby="m4-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="m4-title">Lösungen: Selbstwert</h2>
+    <div class="solution-menu">
+      <button class="btn" data-popup="meditation">Meditation</button>
+      <button class="btn" data-popup="journal">Journaling</button>
+      <button class="btn" data-popup="affirmation">Affirmationen</button>
+    </div>
+  </div>
+</div>
 
-<div id="dance" class="popup"><div class="popup-content"><span class="close" onclick="closePopup('dance')">X</span><h2>Freies Tanzen</h2><iframe src="https://www.youtube.com/embed/3dclxJ6dC0c"></iframe></div></div>
+<div id="m5" class="popup" role="dialog" aria-hidden="true" aria-labelledby="m5-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="m5-title">Lösungen: Emotionale Blockaden</h2>
+    <div class="solution-menu">
+      <button class="btn" data-popup="dance">Tanzen</button>
+      <button class="btn" data-popup="breath">Atem</button>
+      <button class="btn" data-popup="eft">EFT Klopfen</button>
+    </div>
+  </div>
+</div>
 
-<!-- FOOTER -->
+<!-- LÖSUNGS-VIDEOS -->
+<div id="breath" class="popup" role="dialog" aria-hidden="true" aria-labelledby="breath-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="breath-title">Atemübungen</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/inpok4MKVLM)" 
+              title="Atemübungen Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="taichi" class="popup" role="dialog" aria-hidden="true" aria-labelledby="taichi-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="taichi-title">Tai Chi</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/cEOS2zoyQw4)" 
+              title="Tai Chi Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="dance" class="popup" role="dialog" aria-hidden="true" aria-labelledby="dance-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="dance-title">Freies Tanzen</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/3dclxJ6dC0c)" 
+              title="Freies Tanzen Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="meditation" class="popup" role="dialog" aria-hidden="true" aria-labelledby="meditation-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="meditation-title">Meditation</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/ZToicYcHIOU)" 
+              title="Meditation Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="journal" class="popup" role="dialog" aria-hidden="true" aria-labelledby="journal-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="journal-title">Journaling</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/dArgOrm98Bk)" 
+              title="Journaling Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="yoga" class="popup" role="dialog" aria-hidden="true" aria-labelledby="yoga-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="yoga-title">Yoga</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/v7AYKMP6rOE)" 
+              title="Yoga Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="affirmation" class="popup" role="dialog" aria-hidden="true" aria-labelledby="affirmation-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="affirmation-title">Affirmationen</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/z0GtmPnqAd8)" 
+              title="Affirmationen Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="eft" class="popup" role="dialog" aria-hidden="true" aria-labelledby="eft-title">
+  <div class="popup-content">
+    <button class="close-btn" aria-label="Schließen">&times;</button>
+    <h2 id="eft-title">EFT Klopfen</h2>
+    <div class="video-container">
+      <iframe data-src="[youtube.com](https://www.youtube.com/embed/pAclBdj20ZU)" 
+              title="EFT Klopfen Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <footer>
-<p>Folge uns:</p>
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
-<a href="#">YouTube</a>
+  <p>Folge uns:</p>
+  <nav class="social-links" aria-label="Social Media">
+    <a href="#" aria-label="Instagram">Instagram</a>
+    <a href="#" aria-label="TikTok">TikTok</a>
+    <a href="#" aria-label="YouTube">YouTube</a>
+  </nav>
 </footer>
 
 <script>
-function openPopup(id){document.getElementById(id).style.display='flex';}
-function closePopup(id){document.getElementById(id).style.display='none';}
+(function() {
+  // Popup-Funktionen
+  function openPopup(id) {
+    const popup = document.getElementById(id);
+    if (!popup) return;
+    
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Lazy-load Video
+    const iframe = popup.querySelector('iframe[data-src]');
+    if (iframe && !iframe.src) {
+      iframe.src = iframe.dataset.src;
+    }
+    
+    // Fokus auf Schließen-Button
+    const closeBtn = popup.querySelector('.close-btn');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closePopup(id) {
+    const popup = document.getElementById(id);
+    if (!popup) return;
+    
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    
+    // Video stoppen
+    const iframe = popup.querySelector('iframe');
+    if (iframe && iframe.src) {
+      iframe.src = iframe.src; // Reload stoppt das Video
+    }
+  }
+
+  function closeAllPopups() {
+    document.querySelectorAll('.popup[aria-hidden="false"]').forEach(popup => {
+      closePopup(popup.id);
+    });
+  }
+
+  // Event-Listener für Buttons mit data-popup
+  document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-popup]');
+    if (trigger) {
+      openPopup(trigger.dataset.popup);
+      return;
+    }
+
+    // Schließen-Button
+    if (e.target.closest('.close-btn')) {
+      const popup = e.target.closest('.popup');
+      if (popup) closePopup(popup.id);
+      return;
+    }
+
+    // Klick außerhalb des Popup-Contents
+    if (e.target.classList.contains('popup')) {
+      closePopup(e.target.id);
+    }
+  });
+
+  // Escape-Taste
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAllPopups();
+    }
+  });
+})();
 </script>
 
 </body>
